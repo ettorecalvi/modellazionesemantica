@@ -1,0 +1,905 @@
+@prefix : <http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#> .
+
+<http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle> rdf:type owl:Ontology ;
+                                                                    <http://purl.org/dc/elements/1.1/creator> "Ettore Calvi" ;
+                                                                    <http://purl.org/dc/elements/1.1/date> ""^^xsd:dateTime ,
+                                                                                                           "25/01/2024" ;
+                                                                    <http://purl.org/dc/elements/1.1/description> "Ontologia realizzata per descrivere le specifiche tipologie di biciclette destinate alla vendita"@it ;
+                                                                    <http://purl.org/dc/elements/1.1/title> "Bike Rent Ontology"@en ;
+                                                                    :vann:preferredNamespacePrefix "bro" ,
+                                                                                                   "http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#" ;
+                                                                    rdfs:comment "" ;
+                                                                    rdfs:label "BikeRentOntology" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/creator
+<http://purl.org/dc/elements/1.1/creator> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/date
+<http://purl.org/dc/elements/1.1/date> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/description
+<http://purl.org/dc/elements/1.1/description> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/title
+<http://purl.org/dc/elements/1.1/title> rdf:type owl:AnnotationProperty .
+
+
+###  http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled
+<http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#vann:preferredNamespacePrefix
+:vann:preferredNamespacePrefix rdf:type owl:AnnotationProperty .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#vann:preferredNamespaceUri
+:vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#effettuatoDa
+:effettuatoDa rdf:type owl:ObjectProperty ;
+              owl:inverseOf :possiedeOrdine ;
+              rdfs:domain :Ordine ;
+              rdfs:range :Cliente ;
+              rdfs:comment "specifica che un Ordine è stato effettuato da un Cliente. E' l’inversa di possiedeOrdine" ;
+              rdfs:label "effettuatoDa" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#guida
+:guida rdf:type owl:ObjectProperty ;
+       rdfs:domain :Cliente ;
+       rdfs:range :Bicicletta ;
+       owl:propertyChainAxiom ( :possiedeOrdine
+                                :riguardaBicicletta
+                              ) ;
+       rdfs:comment "è una property chain che racchiude Cliente -> possiedeOrdine -> Ordine -> riguardaBicicletta -> Bicicletta, ed è da intendersi come “Un cliente possiede un ordine che riguarda una specifica bicicletta”." ;
+       rdfs:label "guida" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#monta
+:monta rdf:type owl:ObjectProperty ;
+       rdfs:domain :Bicicletta ;
+       rdfs:range :Componenti ;
+       rdfs:comment "specifica che una data bicicletta è equipaggiata con una specifica componentistica" ;
+       rdfs:label "monta" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#possiedeOrdine
+:possiedeOrdine rdf:type owl:ObjectProperty ;
+                rdfs:domain :Cliente ;
+                rdfs:range :Ordine ;
+                rdfs:comment "modella un ordine posseduto da un cliente" ;
+                rdfs:label "possiedeOrdine" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#riguardaBicicletta
+:riguardaBicicletta rdf:type owl:ObjectProperty ,
+                             owl:FunctionalProperty ;
+                    rdfs:domain :Ordine ;
+                    rdfs:range :Bicicletta ;
+                    rdfs:comment "indica che un ordine include una specifica bicicletta. E’ funzionale perchè un ordine può riguardare solo una specifica bicicletta alla volta" ;
+                    rdfs:label "riguardaBicicletta" .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#disponibile
+:disponibile rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             rdfs:domain :Bicicletta ;
+             rdfs:range xsd:boolean ;
+             rdfs:comment "proprietà booleana che indica se una bicicletta è disponibile per la vendita o l'affitto." ;
+             rdfs:label "disponibile" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#escursione
+:escursione rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Bicicletta_da_Mountainbike ;
+            rdfs:range xsd:decimal ;
+            rdfs:comment "proprietà che rappresenta l'escursione delle sospensioni di una bicicletta." ;
+            rdfs:label "escursione" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#haDataFine
+:haDataFine rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Ordine ;
+            rdfs:range xsd:dateTime ;
+            rdfs:comment "fine del periodo di noleggio" ;
+            rdfs:label "haDataFine" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#haDataInizio
+:haDataInizio rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Ordine ;
+              rdfs:range xsd:dateTime ;
+              rdfs:comment "inizio del periodo di noleggio" ;
+              rdfs:label "haDataInizio" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#nome_cliente
+:nome_cliente rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Cliente ;
+              rdfs:range xsd:string ;
+              rdfs:label "nome_cliente" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#prezzo
+:prezzo rdf:type owl:DatatypeProperty ;
+        rdfs:domain :Bicicletta ;
+        rdfs:range xsd:int ;
+        rdfs:comment "proprietà che rappresenta il prezzo di una bicicletta." ;
+        rdfs:label "prezzo" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#taglia
+:taglia rdf:type owl:DatatypeProperty ;
+        rdfs:domain :Bicicletta ;
+        rdfs:range xsd:string ;
+        rdfs:comment "proprietà che rappresenta la taglia di una bicicletta." ;
+        rdfs:label "taglia" .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://purl.org/vso/ns#Bicycle
+<http://purl.org/vso/ns#Bicycle> rdf:type owl:Class ;
+                                 owl:equivalentClass :Bicicletta .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta
+:Bicicletta rdf:type owl:Class ;
+            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                  owl:onProperty :monta ;
+                                  owl:someValuesFrom :Componenti
+                                ] ;
+            rdfs:comment "Una bicicletta generica che monta una serie di componenti." ;
+            rdfs:label "Bicicletta" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta_da_Mountainbike
+:Bicicletta_da_Mountainbike rdf:type owl:Class ;
+                            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                  owl:onProperty :monta ;
+                                                  owl:someValuesFrom :componenti_da_mountainbike
+                                                ] ;
+                            rdfs:subClassOf :Bicicletta ;
+                            owl:disjointWith :Bicicletta_da_Strada ;
+                            rdfs:comment "bicicletta progettata per l'utilizzo in percorsi off-road, con caratteristiche specifiche di montaggio di componenti adatti alla mountain bike." ;
+                            rdfs:label "Bicicletta_da_Mountainbike" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta_da_Strada
+:Bicicletta_da_Strada rdf:type owl:Class ;
+                      owl:equivalentClass [ rdf:type owl:Restriction ;
+                                            owl:onProperty :monta ;
+                                            owl:someValuesFrom :componenti_da_strada
+                                          ] ;
+                      rdfs:subClassOf :Bicicletta ;
+                      rdfs:comment "bicicletta progettata per l'utilizzo su strade asfaltate, con caratteristiche specifiche di montaggio di componenti adatti alle biciclette da strada." ;
+                      rdfs:label "Bicicletta_da_Strada" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#CX
+:CX rdf:type owl:Class ;
+    owl:equivalentClass [ rdf:type owl:Restriction ;
+                          owl:onProperty :monta ;
+                          owl:someValuesFrom :componenti_CX
+                        ] ;
+    rdfs:subClassOf :Bicicletta_da_Strada ;
+    rdfs:comment "Una bicicletta da strada del tipo Cyclocross con caratteristiche specifiche di montaggio." ;
+    rdfs:label "CX" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Cliente
+:Cliente rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty :possiedeOrdine ;
+                               owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass :Ordine
+                             ] ;
+         rdfs:comment "Una persona che possiede almeno un ordine di bicicletta." ;
+         rdfs:label "Cliente" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Componenti
+:Componenti rdf:type owl:Class ;
+            owl:equivalentClass [ rdf:type owl:Class ;
+                                  owl:oneOf ( :cerchi
+                                              :copertone_CX
+                                              :copertone_gravel
+                                              :copertone_largo
+                                              :copertone_strada
+                                              :copertone_stretto
+                                              :copertoni_DH
+                                              :copertoni_Enduro
+                                              :copertoni_Trail
+                                              :copertoni_XC
+                                              :forcella_rigida
+                                              :frame
+                                              :freni_160mm
+                                              :freni_180mm
+                                              :freni_200mm
+                                              :freni_220mm
+                                              :manubrio_a_goccia
+                                              :manubrio_flat
+                                              :reggisella_telescopico
+                                              :sella_rigida
+                                              :sospensioni_front
+                                              :sospensioni_full
+                                              <http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_BMX/Dirt>
+                                            )
+                                ] ;
+            rdfs:comment "nsieme di parti che compongono una bicicletta, come cerchi, copertoni, freni, etc." ;
+            rdfs:label "Componenti" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Corsa
+:Corsa rdf:type owl:Class ;
+       owl:equivalentClass [ rdf:type owl:Restriction ;
+                             owl:onProperty :monta ;
+                             owl:someValuesFrom :componenti_da_strada
+                           ] ;
+       rdfs:subClassOf :Bicicletta_da_Strada ;
+       rdfs:comment "Una bicicletta da strada progettata per corse, con caratteristiche specifiche di montaggio." ;
+       rdfs:label "Corsa" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#DownHill
+:DownHill rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty :monta ;
+                                owl:someValuesFrom :componenti_DownHill
+                              ] ;
+          rdfs:subClassOf :Bicicletta_da_Mountainbike ;
+          rdfs:comment "Una bicicletta da mountain bike progettata per discese impegnative, con caratteristiche specifiche di montaggio." ;
+          rdfs:label "DownHill" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Enduro
+:Enduro rdf:type owl:Class ;
+        owl:equivalentClass [ rdf:type owl:Restriction ;
+                              owl:onProperty :monta ;
+                              owl:someValuesFrom :componenti_Enduro
+                            ] ;
+        rdfs:subClassOf :Bicicletta_da_Mountainbike ;
+        rdfs:comment "Una bicicletta da mountain bike adatta all'Enduro, con caratteristiche specifiche di montaggio." ;
+        rdfs:label "Enduro" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Gravel
+:Gravel rdf:type owl:Class ;
+        owl:equivalentClass [ rdf:type owl:Restriction ;
+                              owl:onProperty :monta ;
+                              owl:someValuesFrom :componenti_Gravel
+                            ] ;
+        rdfs:subClassOf :Bicicletta_da_Strada ;
+        rdfs:comment "Una bicicletta da strada adatta per l'utilizzo su percorsi misti (gravel), con caratteristiche specifiche di montaggio." ;
+        rdfs:label "Gravel" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Ordine
+:Ordine rdf:type owl:Class ;
+        rdfs:comment "Una transazione che coinvolge un cliente, l'acquisto o l'affitto di una bicicletta." ;
+        rdfs:label "Ordine" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Trail
+:Trail rdf:type owl:Class ;
+       owl:equivalentClass [ rdf:type owl:Restriction ;
+                             owl:onProperty :monta ;
+                             owl:someValuesFrom :componenti_Trail
+                           ] ;
+       rdfs:subClassOf :Bicicletta_da_Mountainbike ;
+       rdfs:comment "Una bicicletta da mountain bike progettata per percorrenze su trail, con specifiche caratteristiche di montaggio." ;
+       rdfs:label "Trail" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#XC
+:XC rdf:type owl:Class ;
+    owl:equivalentClass [ rdf:type owl:Restriction ;
+                          owl:onProperty :monta ;
+                          owl:someValuesFrom :componenti_XC
+                        ] ;
+    rdfs:subClassOf :Bicicletta_da_Mountainbike ;
+    rdfs:comment "Una bicicletta da mountain bike di tipo Cross-Country con caratteristiche specifiche di montaggio." ;
+    rdfs:label "XC" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_CX
+:componenti_CX rdf:type owl:Class ;
+               owl:equivalentClass [ rdf:type owl:Class ;
+                                     owl:oneOf ( :copertone_CX
+                                               )
+                                   ] ;
+               rdfs:subClassOf :componenti_da_strada ;
+               rdfs:comment "Componenti specifici montati su biciclette da CX." ;
+               rdfs:label "componenti_CX" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_Corsa
+:componenti_Corsa rdf:type owl:Class ;
+                  owl:equivalentClass [ rdf:type owl:Class ;
+                                        owl:oneOf ( :copertone_strada
+                                                  )
+                                      ] ;
+                  rdfs:subClassOf :componenti_da_strada ;
+                  rdfs:comment "Componenti specifici montati su biciclette da corsa." ;
+                  rdfs:label "componenti_Corsa" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_DownHill
+:componenti_DownHill rdf:type owl:Class ;
+                     owl:equivalentClass [ rdf:type owl:Class ;
+                                           owl:oneOf ( :copertoni_DH
+                                                       :freni_220mm
+                                                     )
+                                         ] ;
+                     rdfs:subClassOf :componenti_da_mountainbike ;
+                     rdfs:comment "Componenti specifici montati su biciclette da DownHill." ;
+                     rdfs:label "componenti_DownHill" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_Enduro
+:componenti_Enduro rdf:type owl:Class ;
+                   owl:equivalentClass [ rdf:type owl:Class ;
+                                         owl:oneOf ( :copertoni_Enduro
+                                                     :freni_200mm
+                                                   )
+                                       ] ;
+                   rdfs:subClassOf :componenti_da_mountainbike ;
+                   rdfs:comment "Componenti specifici montati su biciclette da Enduro." ;
+                   rdfs:label "componenti_Enduro" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_Gravel
+:componenti_Gravel rdf:type owl:Class ;
+                   owl:equivalentClass [ rdf:type owl:Class ;
+                                         owl:oneOf ( :copertone_gravel
+                                                   )
+                                       ] ;
+                   rdfs:subClassOf :componenti_da_strada ;
+                   rdfs:comment "Componenti specifici montati su biciclette da gravel." ;
+                   rdfs:label "componenti_Gravel" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_Trail
+:componenti_Trail rdf:type owl:Class ;
+                  owl:equivalentClass [ rdf:type owl:Class ;
+                                        owl:oneOf ( :copertoni_Trail
+                                                    :freni_180mm
+                                                  )
+                                      ] ;
+                  rdfs:subClassOf :componenti_da_mountainbike ;
+                  rdfs:comment "Componenti specifici montati su biciclette da Trail." ;
+                  rdfs:label "componenti_Trail" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_XC
+:componenti_XC rdf:type owl:Class ;
+               owl:equivalentClass [ rdf:type owl:Class ;
+                                     owl:oneOf ( :copertoni_XC
+                                                 :freni_160mm
+                                               )
+                                   ] ;
+               rdfs:subClassOf :componenti_da_mountainbike ;
+               rdfs:comment "Componenti specifici montati su biciclette di tipo Cross-Country." ;
+               rdfs:label "componenti_XC" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_da_mountainbike
+:componenti_da_mountainbike rdf:type owl:Class ;
+                            owl:equivalentClass [ rdf:type owl:Class ;
+                                                  owl:oneOf ( :copertone_largo
+                                                              :copertoni_DH
+                                                              :copertoni_Enduro
+                                                              :copertoni_Trail
+                                                              :copertoni_XC
+                                                              :freni_160mm
+                                                              :freni_180mm
+                                                              :freni_200mm
+                                                              :freni_220mm
+                                                              :manubrio_flat
+                                                              :reggisella_telescopico
+                                                              :sospensioni_front
+                                                              :sospensioni_full
+                                                              <http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_BMX/Dirt>
+                                                            )
+                                                ] ;
+                            rdfs:subClassOf :Componenti ;
+                            rdfs:comment "Insieme di componenti specifici per biciclette da mountain bike." ;
+                            rdfs:label "componenti_da_mountainbike" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_da_strada
+:componenti_da_strada rdf:type owl:Class ;
+                      owl:equivalentClass [ rdf:type owl:Class ;
+                                            owl:oneOf ( :copertone_CX
+                                                        :copertone_gravel
+                                                        :copertone_strada
+                                                        :copertone_stretto
+                                                        :forcella_rigida
+                                                        :manubrio_a_goccia
+                                                        :sella_rigida
+                                                      )
+                                          ] ;
+                      rdfs:subClassOf :Componenti ;
+                      rdfs:comment "Insieme di componenti specifici per biciclette da strada." ;
+                      rdfs:label "componenti_da_strada" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Dirt/BMX
+<http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Dirt/BMX> rdf:type owl:Class ;
+                                                                            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                                                  owl:onProperty :monta ;
+                                                                                                  owl:someValuesFrom <http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_Dirt/BMX>
+                                                                                                ] ;
+                                                                            rdfs:subClassOf :Bicicletta_da_Mountainbike ;
+                                                                            rdfs:comment "Una categoria di biciclette da mountain bike adatte a percorsi Dirt/BMX." ;
+                                                                            rdfs:label "Dirt/BMX" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_Dirt/BMX
+<http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_Dirt/BMX> rdf:type owl:Class ;
+                                                                                       owl:equivalentClass [ rdf:type owl:Class ;
+                                                                                                             owl:oneOf ( <http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_BMX/Dirt>
+                                                                                                                       )
+                                                                                                           ] ;
+                                                                                       rdfs:subClassOf :componenti_da_mountainbike ;
+                                                                                       rdfs:comment "Componenti specifici montati su biciclette adatte a percorsi Dirt/BMX." ;
+                                                                                       rdfs:label "componenti_Dirt/BMX" .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Alberto_Nobile
+:Alberto_Nobile rdf:type owl:NamedIndividual ;
+                :possiedeOrdine :Ordine2 .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Anna_Selleri
+:Anna_Selleri rdf:type owl:NamedIndividual ;
+              :possiedeOrdine :Ordine3 .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Giovanni_Taccagno
+:Giovanni_Taccagno rdf:type owl:NamedIndividual ;
+                   :possiedeOrdine :Ordine1 ;
+                   rdfs:comment "Cliente di BRO intento ad affittare una bicicletta" ;
+                   rdfs:label "Giovanni_Taccagno" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Ordine1
+:Ordine1 rdf:type owl:NamedIndividual ;
+         :riguardaBicicletta :Specialized_Epic ;
+         :haDataFine "2024-02-05T17:00:00"^^xsd:dateTime ;
+         :haDataInizio "2024-01-30T08:00:00"^^xsd:dateTime ;
+         rdfs:comment "Esempio di ordine di affitto di una bicicletta" ;
+         rdfs:label "Ordine1" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Ordine2
+:Ordine2 rdf:type owl:NamedIndividual ;
+         :riguardaBicicletta :Specialized_Enduro ;
+         :haDataFine "2024-02-15T08:00:00"^^xsd:dateTime ;
+         :haDataInizio "2024-01-31T08:00:00"^^xsd:dateTime .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Ordine3
+:Ordine3 rdf:type owl:NamedIndividual ;
+         :riguardaBicicletta :Specialized_Diverge ;
+         :haDataFine "2024-02-28T08:00:00"^^xsd:dateTime ;
+         :haDataInizio "2024-01-20T08:00:00"^^xsd:dateTime .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Specialized_Crux
+:Specialized_Crux rdf:type owl:NamedIndividual ;
+                  :monta :copertone_CX ;
+                  :disponibile "true"^^xsd:boolean ;
+                  :prezzo 50 ;
+                  :taglia "M" ;
+                  rdfs:comment "La CruX è la bici CX più leggera al mondo, con ampia luce per gli pneumatici ed una geometria pensata per prestazioni e velocità. Ora anche il gravel si illumina di performance e leggerezza. La CruX Pro monta il gruppo SRAM Force 1 eTap AXS completo di freni a disco idraulici, leggere e resistenti ruote Roval Terra CL Disc e pneumatici Pathfinder Pro 2Bliss Ready 700x38…" ;
+                  rdfs:label "Specialized_Crux" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Specialized_Demo
+:Specialized_Demo rdf:type owl:NamedIndividual ;
+                  :monta :copertoni_DH ,
+                         :freni_220mm ;
+                  :disponibile "true"^^xsd:boolean ;
+                  :escursione 200 ;
+                  :prezzo 80 ;
+                  :taglia "L" ;
+                  rdfs:comment "La massima velocità è sempre stata l'obiettivo principale per la progettazione delle Demo. Il design del telaio prevede la flessibilità nel montaggio delle ruote e permette al rider di montare una ruota anteriore da 29 pollici e una posteriore da 27,5. Una combinazione già testata dal Campione del Mondo Loic Bruni che cercava l'equilibrio perfetto tra trazione e manovrabilità, ora anche approvata da parte dell’UCI…" ;
+                  rdfs:label "Specialized_Demo" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Specialized_Diverge
+:Specialized_Diverge rdf:type owl:NamedIndividual ;
+                     :monta :copertone_gravel ;
+                     :disponibile "false"^^xsd:boolean ;
+                     :prezzo 40 ;
+                     :taglia "S" ;
+                     rdfs:comment "Per evadere sui sentieri in campagna, lontano dal traffico e dalla gente, ma anche per andare a tutta nella tua gara gravel preferita, la Diverge è perfetta. La gravel bike più veloce, capace e divertente che abbiamo mai prodotta. E' scattante e agile sotto sforzo, stabile e sicuro se il terreno si fa impegnativo…" ;
+                     rdfs:label "Specialized_Diverge" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Specialized_Enduro
+:Specialized_Enduro rdf:type owl:NamedIndividual ;
+                    :monta :copertoni_Enduro ,
+                           :freni_200mm ,
+                           :sospensioni_full ;
+                    :disponibile "false"^^xsd:boolean ;
+                    :escursione 160 ;
+                    :prezzo 60 ;
+                    :taglia "M" ;
+                    rdfs:comment "L'Enduro viene fornito di serie con componentistica di altissimo livello. Ottime prestazioni in downhill con l'escursione di 160mm, sospensioni RockShox, potenti freni a a disco e robuste ruote in lega." ;
+                    rdfs:label "Specialized_Enduro" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Specialized_Epic
+:Specialized_Epic rdf:type owl:NamedIndividual ;
+                  :monta :copertoni_XC ,
+                         :freni_160mm ,
+                         :reggisella_telescopico ;
+                  :disponibile "false"^^xsd:boolean ;
+                  :escursione 100 ;
+                  :prezzo 40 ;
+                  :taglia "M" ;
+                  rdfs:comment "Ehi tu! ... si tu, quello con il bilancino per verificare quale degli sei pneumatici uguali sullo scaffale sia il più leggero ... Certo qualcuno potrebbe definirti leggermente ossessionato, ma non ti preoccupare, la Epic parla la tua stessa lingua…" ;
+                  rdfs:label "Specialized_Epic" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Specialized_Epic_EVO
+:Specialized_Epic_EVO rdf:type owl:NamedIndividual ;
+                      :monta :copertoni_XC ,
+                             :freni_180mm ,
+                             :reggisella_telescopico ;
+                      :disponibile "true"^^xsd:boolean ;
+                      :escursione 120 ;
+                      :prezzo 100 ;
+                      :taglia "M" ;
+                      rdfs:comment "Più si riesce ad alleggerire un telaio, più si andrà veloce. Con il telaio EVO più leggero ed una geometria Progressive XC più aggressivo che mai la S-Works Epic EVO offre un rapporto capacità/peso eccezionale.Sulle Epic EVO aumenta di 20mm la corsa della forcella e di 10mm l'escursione sulla ruota posteriore, ma con uno sforzo notevole siamo riusciti ad implementare queste variazioni in modo tale da fare una differenza enorme nell'affrontare il singletrack…" ;
+                      rdfs:label "Specialized_Epic_EVO" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Specialized_Epic_HT
+:Specialized_Epic_HT rdf:type owl:NamedIndividual ;
+                     :monta :copertoni_XC ,
+                            :freni_160mm ,
+                            :sospensioni_front ;
+                     :disponibile "true"^^xsd:boolean ;
+                     :escursione 100 ;
+                     :prezzo 30 ;
+                     :taglia "S" ;
+                     rdfs:comment "Li conosci gli sguardi. Quelli che dicono ma-qui-pedalerà-per-davvero-una-hardtail ? Prepàrati a riceverne di più, di quegli sguardi. L'Epic Hardtail è veloce, leggera e capace e stabilisce gli nuovi standard di quello che è possibile fare con una macchina da corsa del cross-country…" ;
+                     rdfs:label "Specialized_Epic_HT" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Specialized_PSeries
+:Specialized_PSeries rdf:type owl:NamedIndividual ;
+                     :monta <http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_BMX/Dirt> ;
+                     :disponibile "false"^^xsd:boolean ;
+                     :prezzo 40 ;
+                     :taglia "M" ;
+                     rdfs:comment "Il telaio delle P.Series è stato completamente rivisto per creare una bici divertente e resistente che invoglierà a pedalare per tutta la vita.SEMPLICITA' - Per chi cerca sempre di migliorarsi, eliminare tutte le altre variabili è fondamentale. Il telaio in lega leggera con passaggio interno dei cavi è molto resistente, perfettamente adatto ai rigori del dirt jumping…" ;
+                     rdfs:label "Specialized_PSeries" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Specialized_Stumpjumper
+:Specialized_Stumpjumper rdf:type owl:NamedIndividual ;
+                         :monta :copertoni_Trail ,
+                                :freni_200mm ;
+                         :disponibile "true"^^xsd:boolean ;
+                         :escursione 140 ;
+                         :prezzo 60 ;
+                         :taglia "M" ;
+                         rdfs:comment "Con la Stumpjumper Expert siamo riusciti a catturare quella sensazione che provi quando sali in sella alla tua nuova bici, una trailbike così agile, vivace e perfetta per il trail che sembra un'estensione del tuo corpo. Salita dura? Nessun problema. Discesa paurosa, facile…" ;
+                         rdfs:label "Specialized_Stumpjumper" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Specialized_Tarmac
+:Specialized_Tarmac rdf:type owl:NamedIndividual ;
+                    :monta :copertone_strada ;
+                    :disponibile "true"^^xsd:boolean ;
+                    :prezzo 120 ;
+                    :taglia "L" ;
+                    rdfs:comment "Nessuna bicicletta è veloce quanto il Tarmac SL8 grazie a una combinazione di aerodinamica, leggerezza e qualità di guida precedentemente ritenuta impossibile. Dopo otto generazioni e oltre due decenni di sviluppo, non è solo il Tarmac più veloce di sempre: è la bici da corsa più veloce del mondo…" ;
+                    rdfs:label "Specialized_Tarmac" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#categoria_CX
+:categoria_CX rdf:type owl:NamedIndividual ,
+                       :CX ;
+              rdfs:comment "E' una bicicletta progettata specificamente per le gare di ciclocross" ;
+              rdfs:label "categoria_CX" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#categoria_Corsa
+:categoria_Corsa rdf:type owl:NamedIndividual ,
+                          :Corsa ;
+                 rdfs:comment "Tipo di bicicletta progettata per il ciclismo su strada, per effettuare competizioni in linea o a tappe su distanze più o meno lunghe" ;
+                 rdfs:label "categoria_Corsa" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#categoria_DH
+:categoria_DH rdf:type owl:NamedIndividual ,
+                       :DownHill ;
+              rdfs:comment "Le mountain bike da downhill sono sviluppate intorno all'omonima competizione: una gara di discesa a tempo su tracciati variabilmente veloci e tecnici. Monta enormi freni da 220mm di diametro e sospensioni da 200mm di escursione." ;
+              rdfs:label "categoria_DH"@it .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#categoria_Enduro
+:categoria_Enduro rdf:type owl:NamedIndividual ,
+                           :Enduro ;
+                  rdfs:comment "Le mountain bike da enduro sono simili alle all mountain, ma in genere si tratta di mezzi da competizione.  Generalmente i freni sono da 200mm di diametro e le sospensioni da 160mm di escursione." ;
+                  rdfs:label "categoria_Enduro" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#categoria_Gravel
+:categoria_Gravel rdf:type owl:NamedIndividual ,
+                           :Gravel ;
+                  rdfs:comment "La bicicletta gravel \"moderna\", come categoria, si è evoluta negli anni 2000, adottando la tecnologia delle biciclette da strada , delle biciclette da ciclocross e delle mountain bike." ;
+                  rdfs:label "categoria_Gravel" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#categoria_Trail
+:categoria_Trail rdf:type owl:NamedIndividual ,
+                          :Trail ;
+                 rdfs:comment "Biciclettta full suspended progettata per il giusto compromesso di pedalabilità tra discesa e salita, affidabilità e robustezza, e comodità di guida-seduta. Monta, freni da 180mm di diametro e sospensioni da 140mm di escursione." ;
+                 rdfs:label "categoria_Trail" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#categoria_XC
+:categoria_XC rdf:type owl:NamedIndividual ,
+                       :XC ;
+              rdfs:comment "Concepita per la prestazione e la velocità, può essere front (ammortizzata solo anteriormente) o full (integra una sospensione posteriore).  E’ caratterizzata da un telaio leggero, freni da 160mm di diametro e sospensioni da 100mm di escursione." ;
+              rdfs:label "categoria_XC" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#cerchi
+:cerchi rdf:type owl:NamedIndividual ;
+        rdfs:comment "Il cerchio di una ruota per bicicletta è la parte esterna della ruota stessa, collegato al mozzo mediante i raggi, ed accoglie lo pneumatico e la camera d'aria." ;
+        rdfs:label "cerchi" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertone_CX
+:copertone_CX rdf:type owl:NamedIndividual ;
+              rdfs:comment "Adesione e prestazioni grazie alla gomma a doppia densità. Il suo profilo a rampone consente di mantenere una buona presa anche in condizioni di bagnato." ;
+              rdfs:label "copertone_CX" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertone_gravel
+:copertone_gravel rdf:type owl:NamedIndividual ;
+                  rdfs:comment "Presentano una larghezza che va dai 28 ai 35 mm. Questi copertoni necessitano di una minore pressione dell'aria e permettono una condotta piuttosto veloce. I disegni del battistrada garantiscono una maggiore presa sul terreno in caso di fango o su terreni sdrucciolevoli." ;
+                  rdfs:label "copertone_gravel" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertone_largo
+:copertone_largo rdf:type owl:NamedIndividual ;
+                 rdfs:comment "Tipo generico di copertone da MTB" ;
+                 rdfs:label "copertone_largo" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertone_strada
+:copertone_strada rdf:type owl:NamedIndividual ;
+                  rdfs:comment "I copertoni da bici da corsa sono disponibili in diverse larghezze, da 23 mm a 28 mm. La larghezza del copertone influisce sulla resistenza al rotolamento, sul comfort e sulla stabilità. I copertoni più stretti sono più veloci, ma meno confortevoli e meno stabili su superfici sconnesse. I copertoni più larghi sono più confortevoli e stabili, ma meno veloci." ;
+                  rdfs:label "copertone_strada" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertone_stretto
+:copertone_stretto rdf:type owl:NamedIndividual ;
+                   rdfs:comment "Tipo generico di copertone da strada" ;
+                   rdfs:label "copertone_stretto" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_DH
+:copertoni_DH rdf:type owl:NamedIndividual ;
+              rdfs:comment """I copertoni da Downhill sono caratterizzati da una serie di caratteristiche che li rendono adatti a questo tipo di utilizzo, tra cui:
+
+Larghezza: i copertoni da Downhill sono generalmente più larghi dei copertoni per altre discipline MTB, con larghezze che vanno da 2,4 pollici a 2,8 pollici. La larghezza maggiore offre una maggiore superficie di contatto con il terreno, che migliora la trazione e la stabilità.
+
+
+Copertone da Downhill largo
+Tacchetti: i copertoni da Downhill hanno tasselli aggressivi che forniscono una maggiore trazione su terreni scivolosi e accidentati. I tasselli sono solitamente disposti in un profilo a V o a W per migliorare la trazione in curva.
+
+
+Copertone da Downhill con tasselli
+Mescola di gomma: la mescola di gomma dei copertoni da DownHill è generalmente morbida per fornire una maggiore aderenza. Tuttavia, la mescola deve anche essere resistente alle forature.""" ;
+              rdfs:label "copertoni_DH" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_Enduro
+:copertoni_Enduro rdf:type owl:NamedIndividual ;
+                  rdfs:comment "Copertone da Enduro: pneumatico per bicicletta progettato per essere utilizzato in percorsi di montagna tecnici e impegnativi. È caratterizzato da una larghezza media, tasselli moderatamente aggressivi e una mescola di gomma intermedia." ;
+                  rdfs:label "copertoni_Enduro" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_Trail
+:copertoni_Trail rdf:type owl:NamedIndividual ;
+                 rdfs:comment "Pneumatico per bicicletta progettato per essere utilizzato in percorsi di montagna misti, che includono terreni tecnici e impegnativi, ma anche tratti più scorrevoli. È caratterizzato da una larghezza media, tasselli moderatamente aggressivi e una mescola di gomma intermedia." ;
+                 rdfs:label "copertoni_Trail" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_XC
+:copertoni_XC rdf:type owl:NamedIndividual ;
+              rdfs:comment "Pneumatico per bicicletta progettato per essere utilizzato in percorsi di montagna veloci e scorrevoli. È caratterizzato da una larghezza stretta, tasselli poco aggressivi e una mescola di gomma dura." ;
+              rdfs:label "copertoni_XC" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#forcella_rigida
+:forcella_rigida rdf:type owl:NamedIndividual ;
+                 rdfs:comment """La forcella rigida è un componente della bicicletta da strada che collega il telaio alla ruota anteriore. È costituita da un tubo dritto o conico che termina in un morsetto per il cerchio.
+
+Le forcelle rigide sono caratterizzate da una maggiore rigidità rispetto alle forcelle ammortizzate. Questo conferisce alla bicicletta una maggiore efficienza e velocità. Tuttavia, le forcelle rigide possono essere meno confortevoli su terreni sconnessi.
+
+Le forcelle rigide sono disponibili in diversi materiali, tra cui alluminio, fibra di carbonio e acciaio. I modelli in alluminio sono i più economici e leggeri, mentre i modelli in fibra di carbonio sono i più rigidi e costosi. I modelli in acciaio sono un buon compromesso tra rigidità e peso.""" ;
+                 rdfs:label "forcella_rigida" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#frame
+:frame rdf:type owl:NamedIndividual ;
+       rdfs:label "frame" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_160mm
+:freni_160mm rdf:type owl:NamedIndividual ;
+             rdfs:comment "I freni da 160 mm sono i più piccoli e leggeri disponibili. Sono ideali per le discipline XC, dove la leggerezza e l'efficienza sono fondamentali. I freni da 160 mm forniscono un'adeguata potenza frenante per la maggior parte dei percorsi XC, ma possono essere insufficienti per frenate forti o su terreni tecnici." ;
+             rdfs:label "freni_160mm" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_180mm
+:freni_180mm rdf:type owl:NamedIndividual ;
+             rdfs:comment "I freni da 180 mm sono una buona scelta per le discipline Trail e Enduro. Offrono una potenza frenante maggiore rispetto ai freni da 160 mm, rendendoli più efficaci su terreni tecnici e in frenate forti. I freni da 180 mm sono una buona scelta per i ciclisti che desiderano un'elevata potenza frenante senza sacrificare troppo la leggerezza." ;
+             rdfs:label "freni_180mm" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_200mm
+:freni_200mm rdf:type owl:NamedIndividual ;
+             rdfs:comment "I freni da 200 mm sono i più diffusi nelle discipline Enduro e DH. Offrono la massima potenza frenante disponibile, rendendoli indispensabili per affrontare terreni impegnativi e frenate forti. I freni da 200 mm sono una buona scelta per i ciclisti che desiderano il massimo in termini di potenza frenante e sicurezza." ;
+             rdfs:label "freni_200mm" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_220mm
+:freni_220mm rdf:type owl:NamedIndividual ;
+             rdfs:comment "I freni da 220 mm sono la scelta più estrema disponibile. Offrono una potenza frenante ancora maggiore rispetto ai freni da 200 mm, ma sono anche i più pesanti. I freni da 220 mm sono una buona scelta per i ciclisti che gareggiano a livello professionale o che desiderano il massimo in termini di potenza frenante e sicurezza." ;
+             rdfs:label "freni_220mm" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#manubrio_a_goccia
+:manubrio_a_goccia rdf:type owl:NamedIndividual ;
+                   rdfs:comment "Il manubrio a goccia è un tipo di manubrio da bicicletta caratterizzato da una forma curva che ricorda la goccia di una lacrima. È il tipo di manubrio più comunemente utilizzato nelle biciclette da corsa, ma può essere utilizzato anche su altre tipologie di biciclette, come CX e gravel" ;
+                   rdfs:label "manubrio_a_goccia" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#manubrio_flat
+:manubrio_flat rdf:type owl:NamedIndividual ;
+               rdfs:comment "Il manubrio flat è un tipo di manubrio da bicicletta caratterizzato da una forma piatta. È il tipo di manubrio più comunemente utilizzato sulle biciclette da mountain bike, ma può essere utilizzato anche su altre tipologie di biciclette." ;
+               rdfs:label "manubrio_flat" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#reggisella_telescopico
+:reggisella_telescopico rdf:type owl:NamedIndividual ;
+                        rdfs:comment "Il reggisella telescopico è un componente della bicicletta che consente al ciclista di regolare l'altezza della sella in modo rapido e semplice. È un componente comune nelle biciclette da mountain bike, ma può essere trovato anche in altre tipologie di biciclette, come le biciclette da corsa e le gravel." ;
+                        rdfs:label "reggisella_telescopico" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#sella_rigida
+:sella_rigida rdf:type owl:NamedIndividual ;
+              rdfs:comment "Le selle rigide sono spesso utilizzate nelle biciclette da corsa, dove la leggerezza e l'efficienza sono fondamentali. Possono essere utilizzate anche in altre tipologie di biciclette, come le biciclette da ciclocross e le biciclette da gravel." ;
+              rdfs:label "sella_rigida" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#sospensioni_front
+:sospensioni_front rdf:type owl:NamedIndividual ;
+                   rdfs:comment "Le sospensioni front, o forcelle ammortizzate, sono un componente della bicicletta da mountain bike che collega il telaio alla ruota anteriore. Sono costituite da un tubo dritto o conico che termina in un morsetto per il cerchio." ;
+                   rdfs:label "sospensioni_front" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#sospensioni_full
+:sospensioni_full rdf:type owl:NamedIndividual ;
+                  rdfs:comment "Le sospensioni full, o sospensioni complete, sono un tipo di sospensione per bicicletta che collega il telaio a entrambe le ruote. Sono costituite da una forcella ammortizzata anteriore e da un ammortizzatore posteriore." ;
+                  rdfs:label "sospensioni_full" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#trasmissione
+:trasmissione rdf:type owl:NamedIndividual ;
+              rdfs:comment "La trasmissione di una bicicletta è l'insieme dei componenti che consentono di trasmettere il movimento dai pedali alle ruote. È un componente fondamentale della bicicletta, in quanto consente al ciclista di regolare la velocità e la potenza di pedalata." ;
+              rdfs:label "trasmissione" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#categoria_BMX/DirtJumps
+<http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#categoria_BMX/DirtJumps> rdf:type owl:NamedIndividual ,
+                                                                                                    <http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Dirt/BMX> ;
+                                                                                           rdfs:comment "Biciclette progettate per l’omonima disciplina che prevede salti caratterizzati da complesse acrobazie. Le specifiche di questo mezzo variano molto in base alla filosofia dei vari brand. Ciò che le accomuna sono i cerchi da 24 o 26 pollici, con copertoni generalmente slick." ;
+                                                                                           rdfs:label "categoria_BMX/DirtJumps" .
+
+
+###  http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_BMX/Dirt
+<http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_BMX/Dirt> rdf:type owl:NamedIndividual ;
+                                                                                      rdfs:comment "Pneumatici con battistrada abbastanza liscio e duro ma dotati di tacchetti sui lati per fare presa in curva." ;
+                                                                                      rdfs:label "copertoni_BMX/Dirt" .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( :cerchi
+                        :copertone_CX
+                        :copertone_gravel
+                        :copertone_largo
+                        :copertone_strada
+                        :copertone_stretto
+                        :copertoni_DH
+                        :copertoni_Enduro
+                        :copertoni_Trail
+                        :copertoni_XC
+                        :forcella_rigida
+                        :frame
+                        :freni_160mm
+                        :freni_180mm
+                        :freni_200mm
+                        :freni_220mm
+                        :manubrio_a_goccia
+                        :manubrio_flat
+                        :reggisella_telescopico
+                        :sella_rigida
+                        :sospensioni_front
+                        :sospensioni_full
+                        :trasmissione
+                        <http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_BMX/Dirt>
+                      )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( :cerchi
+                        :copertone_largo
+                        :copertone_stretto
+                        :copertoni_DH
+                        :copertoni_Enduro
+                        :copertoni_Trail
+                        :copertoni_XC
+                        :forcella_rigida
+                        :frame
+                        :freni_160mm
+                        :freni_180mm
+                        :freni_200mm
+                        :freni_220mm
+                        :manubrio_a_goccia
+                        :manubrio_flat
+                        :reggisella_telescopico
+                        :sella_rigida
+                        :sospensioni_front
+                        :sospensioni_full
+                        :trasmissione
+                        <http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_BMX/Dirt>
+                      )
+] .
+
+
+###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi
