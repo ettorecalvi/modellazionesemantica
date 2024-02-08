@@ -1,0 +1,2336 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/ettorecalvi/ontologies/2024/1/bicycle#"
+     xml:base="http://www.semanticweb.org/ettorecalvi/ontologies/2024/1/bicycle"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:vann="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#vann:"
+     xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:entity="http://www.wikidata.org/entity/"
+     xmlns:bicycle="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/1/bicycle">
+        <dc:creator>Ettore Calvi</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"></dc:date>
+        <dc:date>25/01/2024</dc:date>
+        <dc:description xml:lang="it">Ontologia realizzata per descrivere le specifiche tipologie di biciclette destinate alla vendita</dc:description>
+        <dc:title xml:lang="en">Bike Rent Ontology</dc:title>
+        <vann:preferredNamespacePrefix>bro</vann:preferredNamespacePrefix>
+        <vann:preferredNamespacePrefix>http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#</vann:preferredNamespacePrefix>
+        <rdfs:comment></rdfs:comment>
+        <rdfs:label>BikeRentOntology</rdfs:label>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/creator -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/creator"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/date -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/date"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/description -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/description"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/title -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/title"/>
+    
+
+
+    <!-- http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled -->
+
+    <owl:AnnotationProperty rdf:about="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#vann:preferredNamespacePrefix -->
+
+    <owl:AnnotationProperty rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#vann:preferredNamespacePrefix"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#compete -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#compete">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#effettuatoDa -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#effettuatoDa">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#possiedeOrdine"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Ordine"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Cliente"/>
+        <rdfs:comment>specifica che un Ordine è stato effettuato da un Cliente. E&apos; l’inversa di possiedeOrdine</rdfs:comment>
+        <rdfs:label>effettuatoDa</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#guida -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#guida">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Cliente"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#possiedeOrdine"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#riguardaBicicletta"/>
+        </owl:propertyChainAxiom>
+        <rdfs:comment>è una property chain che racchiude Cliente -&gt; possiedeOrdine -&gt; Ordine -&gt; riguardaBicicletta -&gt; Bicicletta, ed è da intendersi come “Un cliente possiede un ordine che riguarda una specifica bicicletta”.</rdfs:comment>
+        <rdfs:label>guida</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#monta -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#monta">
+        <owl:equivalentProperty rdf:resource="http://www.wikidata.org/entity/P527"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Componenti"/>
+        <rdfs:comment>specifica che una data bicicletta è equipaggiata con una specifica componentistica</rdfs:comment>
+        <rdfs:label>monta</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#possiedeOrdine -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#possiedeOrdine">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Cliente"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Ordine"/>
+        <rdfs:comment>modella un ordine posseduto da un cliente</rdfs:comment>
+        <rdfs:label>possiedeOrdine</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#riguardaBicicletta -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#riguardaBicicletta">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Ordine"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta"/>
+        <rdfs:comment>indica che un ordine include una specifica bicicletta. E’ funzionale perchè un ordine può riguardare solo una specifica bicicletta alla volta</rdfs:comment>
+        <rdfs:label>riguardaBicicletta</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.wikidata.org/entity/P527 -->
+
+    <owl:ObjectProperty rdf:about="http://www.wikidata.org/entity/P527"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#disponibile -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#disponibile">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment>proprietà booleana che indica se una bicicletta è disponibile per la vendita o l&apos;affitto.</rdfs:comment>
+        <rdfs:label>disponibile</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#escursione -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#escursione">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta_da_Mountainbike"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>proprietà che rappresenta l&apos;escursione delle sospensioni di una bicicletta.</rdfs:comment>
+        <rdfs:label>escursione</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#haDataFine -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#haDataFine">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Ordine"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment>fine del periodo di noleggio</rdfs:comment>
+        <rdfs:label>haDataFine</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#haDataInizio -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#haDataInizio">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Ordine"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment>inizio del periodo di noleggio</rdfs:comment>
+        <rdfs:label>haDataInizio</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#prezzo -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#prezzo">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:comment>proprietà che rappresenta il prezzo di una bicicletta.</rdfs:comment>
+        <rdfs:label>prezzo</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#taglia -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#taglia">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>proprietà che rappresenta la taglia di una bicicletta.</rdfs:comment>
+        <rdfs:label>taglia</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/vso/ns#Bicycle -->
+
+    <owl:Class rdf:about="http://purl.org/vso/ns#Bicycle">
+        <owl:equivalentClass rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#monta"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Componenti"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:comment>Una bicicletta generica che monta una serie di componenti.</rdfs:comment>
+        <rdfs:label>Bicicletta</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta_da_Mountainbike -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta_da_Mountainbike">
+        <owl:equivalentClass rdf:resource="http://www.wikidata.org/entity/Q223705"/>
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#monta"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_da_mountainbike"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://purl.org/vso/ns#Bicycle"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta_da_Strada"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#CX"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Corsa"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Gravel"/>
+        <owl:disjointWith rdf:resource="http://www.wikidata.org/entity/Q6453072"/>
+        <rdfs:comment>bicicletta progettata per l&apos;utilizzo in percorsi off-road, con caratteristiche specifiche di montaggio di componenti adatti alla mountain bike.</rdfs:comment>
+        <rdfs:label>Bicicletta_da_Mountainbike</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta_da_Strada -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta_da_Strada">
+        <owl:equivalentClass rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Corsa"/>
+        <owl:equivalentClass rdf:resource="http://www.wikidata.org/entity/Q6453072"/>
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#monta"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_da_strada"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://purl.org/vso/ns#Bicycle"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#DownHill"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Enduro"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Trail"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#XC"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Dirt/BMX"/>
+        <owl:disjointWith rdf:resource="http://www.wikidata.org/entity/Q223705"/>
+        <rdfs:comment>bicicletta progettata per l&apos;utilizzo su strade asfaltate, con caratteristiche specifiche di montaggio di componenti adatti alle biciclette da strada.</rdfs:comment>
+        <rdfs:label>Bicicletta_da_Strada</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Corsa -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Corsa">
+        <owl:equivalentClass rdf:resource="http://www.wikidata.org/entity/Q6453072"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.wikidata.org/entity/Q6453072 -->
+
+    <owl:Class rdf:about="http://www.wikidata.org/entity/Q6453072"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#CX -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#CX">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#monta"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_CX"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta_da_Strada"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Corsa"/>
+        <rdfs:subClassOf rdf:resource="http://www.wikidata.org/entity/Q6453072"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#DownHill"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Enduro"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Trail"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#XC"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Dirt/BMX"/>
+        <owl:disjointWith rdf:resource="http://www.wikidata.org/entity/Q223705"/>
+        <rdfs:comment>Una bicicletta da strada del tipo Cyclocross con caratteristiche specifiche di montaggio.</rdfs:comment>
+        <rdfs:label>CX</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Cliente -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Cliente">
+        <owl:equivalentClass rdf:resource="http://www.wikidata.org/entity/Q852835"/>
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#possiedeOrdine"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Ordine"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:comment>Una persona che possiede almeno un ordine di bicicletta.</rdfs:comment>
+        <rdfs:label>Cliente</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Componenti -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Componenti">
+        <owl:equivalentClass rdf:resource="http://www.wikidata.org/entity/Q30246160"/>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#cerchi"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertone_CX"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertone_gravel"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertone_largo"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertone_strada"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertone_stretto"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_DH"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_Enduro"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_Trail"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_XC"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#forcella_rigida"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#frame"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_160mm"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_180mm"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_200mm"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_220mm"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#manubrio_a_goccia"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#manubrio_flat"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#reggisella_telescopico"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#sella_rigida"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#sospensioni_front"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#sospensioni_full"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_BMX/Dirt"/>
+                </owl:oneOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:comment>nsieme di parti che compongono una bicicletta, come cerchi, copertoni, freni, etc.</rdfs:comment>
+        <rdfs:label>Componenti</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Corsa -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Corsa">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#monta"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_da_strada"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://purl.org/vso/ns#Bicycle"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta_da_Strada"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#DownHill"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Enduro"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Trail"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#XC"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Dirt/BMX"/>
+        <owl:disjointWith rdf:resource="http://www.wikidata.org/entity/Q223705"/>
+        <rdfs:comment>Una bicicletta da strada progettata per corse, con caratteristiche specifiche di montaggio.</rdfs:comment>
+        <rdfs:label>Corsa</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#DownHill -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#DownHill">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#monta"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_DownHill"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta_da_Mountainbike"/>
+        <rdfs:subClassOf rdf:resource="http://www.wikidata.org/entity/Q223705"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Gravel"/>
+        <owl:disjointWith rdf:resource="http://www.wikidata.org/entity/Q6453072"/>
+        <rdfs:comment>Una bicicletta da mountain bike progettata per discese impegnative, con caratteristiche specifiche di montaggio.</rdfs:comment>
+        <rdfs:label>DownHill</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Enduro -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Enduro">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#monta"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_Enduro"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta_da_Mountainbike"/>
+        <rdfs:subClassOf rdf:resource="http://www.wikidata.org/entity/Q223705"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Gravel"/>
+        <owl:disjointWith rdf:resource="http://www.wikidata.org/entity/Q6453072"/>
+        <rdfs:comment>Una bicicletta da mountain bike adatta all&apos;Enduro, con caratteristiche specifiche di montaggio.</rdfs:comment>
+        <rdfs:label>Enduro</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Gravel -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Gravel">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#monta"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_Gravel"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta_da_Strada"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Corsa"/>
+        <rdfs:subClassOf rdf:resource="http://www.wikidata.org/entity/Q6453072"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Trail"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#XC"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Dirt/BMX"/>
+        <owl:disjointWith rdf:resource="http://www.wikidata.org/entity/Q223705"/>
+        <rdfs:comment>Una bicicletta da strada adatta per l&apos;utilizzo su percorsi misti (gravel), con caratteristiche specifiche di montaggio.</rdfs:comment>
+        <rdfs:label>Gravel</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Ordine -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Ordine">
+        <rdfs:comment>Una transazione che coinvolge un cliente, l&apos;acquisto o l&apos;affitto di una bicicletta.</rdfs:comment>
+        <rdfs:label>Ordine</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Trail -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Trail">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#monta"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_Trail"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta_da_Mountainbike"/>
+        <rdfs:subClassOf rdf:resource="http://www.wikidata.org/entity/Q223705"/>
+        <owl:disjointWith rdf:resource="http://www.wikidata.org/entity/Q6453072"/>
+        <rdfs:comment>Una bicicletta da mountain bike progettata per percorrenze su trail, con specifiche caratteristiche di montaggio.</rdfs:comment>
+        <rdfs:label>Trail</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#XC -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#XC">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#monta"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_XC"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta_da_Mountainbike"/>
+        <rdfs:subClassOf rdf:resource="http://www.wikidata.org/entity/Q223705"/>
+        <owl:disjointWith rdf:resource="http://www.wikidata.org/entity/Q6453072"/>
+        <rdfs:comment>Una bicicletta da mountain bike di tipo Cross-Country con caratteristiche specifiche di montaggio.</rdfs:comment>
+        <rdfs:label>XC</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_CX -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_CX">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertone_CX"/>
+                </owl:oneOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_da_strada"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_DownHill"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_Enduro"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_Gravel"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_Trail"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_XC"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_da_mountainbike"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_Dirt/BMX"/>
+        <rdfs:comment>Componenti specifici montati su biciclette da CX.</rdfs:comment>
+        <rdfs:label>componenti_CX</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_Corsa -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_Corsa">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertone_strada"/>
+                </owl:oneOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_da_strada"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_DownHill"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_Enduro"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_Gravel"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_Trail"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_XC"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_da_mountainbike"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_Dirt/BMX"/>
+        <rdfs:comment>Componenti specifici montati su biciclette da corsa.</rdfs:comment>
+        <rdfs:label>componenti_Corsa</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_DownHill -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_DownHill">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_DH"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_220mm"/>
+                </owl:oneOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_da_mountainbike"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_Gravel"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_XC"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_da_strada"/>
+        <rdfs:comment>Componenti specifici montati su biciclette da DownHill.</rdfs:comment>
+        <rdfs:label>componenti_DownHill</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_Enduro -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_Enduro">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_Enduro"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_200mm"/>
+                </owl:oneOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_da_mountainbike"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_Gravel"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_XC"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_da_strada"/>
+        <rdfs:comment>Componenti specifici montati su biciclette da Enduro.</rdfs:comment>
+        <rdfs:label>componenti_Enduro</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_Gravel -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_Gravel">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertone_gravel"/>
+                </owl:oneOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_da_strada"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_Trail"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_XC"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_da_mountainbike"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_Dirt/BMX"/>
+        <rdfs:comment>Componenti specifici montati su biciclette da gravel.</rdfs:comment>
+        <rdfs:label>componenti_Gravel</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_Trail -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_Trail">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_Trail"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_180mm"/>
+                </owl:oneOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_da_mountainbike"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_XC"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_da_strada"/>
+        <rdfs:comment>Componenti specifici montati su biciclette da Trail.</rdfs:comment>
+        <rdfs:label>componenti_Trail</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_XC -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_XC">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_XC"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_160mm"/>
+                </owl:oneOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_da_mountainbike"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_da_strada"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_Dirt/BMX"/>
+        <rdfs:comment>Componenti specifici montati su biciclette di tipo Cross-Country.</rdfs:comment>
+        <rdfs:label>componenti_XC</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_da_mountainbike -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_da_mountainbike">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertone_largo"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_DH"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_Enduro"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_Trail"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_XC"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_160mm"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_180mm"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_200mm"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_220mm"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#manubrio_flat"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#reggisella_telescopico"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#sospensioni_front"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#sospensioni_full"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_BMX/Dirt"/>
+                </owl:oneOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Componenti"/>
+        <rdfs:subClassOf rdf:resource="http://www.wikidata.org/entity/Q30246160"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_da_strada"/>
+        <rdfs:comment>Insieme di componenti specifici per biciclette da mountain bike.</rdfs:comment>
+        <rdfs:label>componenti_da_mountainbike</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_da_strada -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_da_strada">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertone_CX"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertone_gravel"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertone_strada"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertone_stretto"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#forcella_rigida"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#manubrio_a_goccia"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#sella_rigida"/>
+                </owl:oneOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Componenti"/>
+        <rdfs:subClassOf rdf:resource="http://www.wikidata.org/entity/Q30246160"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_Dirt/BMX"/>
+        <rdfs:comment>Insieme di componenti specifici per biciclette da strada.</rdfs:comment>
+        <rdfs:label>componenti_da_strada</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Dirt/BMX -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Dirt/BMX">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#monta"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_Dirt/BMX"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta_da_Mountainbike"/>
+        <rdfs:subClassOf rdf:resource="http://www.wikidata.org/entity/Q223705"/>
+        <owl:disjointWith rdf:resource="http://www.wikidata.org/entity/Q6453072"/>
+        <rdfs:comment>Una categoria di biciclette da mountain bike adatte a percorsi Dirt/BMX.</rdfs:comment>
+        <rdfs:label>Dirt/BMX</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_Dirt/BMX -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_Dirt/BMX">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_BMX/Dirt"/>
+                </owl:oneOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_da_mountainbike"/>
+        <rdfs:comment>Componenti specifici montati su biciclette adatte a percorsi Dirt/BMX.</rdfs:comment>
+        <rdfs:label>componenti_Dirt/BMX</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.wikidata.org/entity/Q223705 -->
+
+    <owl:Class rdf:about="http://www.wikidata.org/entity/Q223705">
+        <rdfs:subClassOf rdf:resource="http://purl.org/vso/ns#Bicycle"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta"/>
+        <owl:disjointWith rdf:resource="http://www.wikidata.org/entity/Q6453072"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.wikidata.org/entity/Q30246160 -->
+
+    <owl:Class rdf:about="http://www.wikidata.org/entity/Q30246160"/>
+    
+
+
+    <!-- http://www.wikidata.org/entity/Q6453072 -->
+
+    <owl:Class rdf:about="http://www.wikidata.org/entity/Q6453072">
+        <rdfs:subClassOf rdf:resource="http://purl.org/vso/ns#Bicycle"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.wikidata.org/entity/Q852835 -->
+
+    <owl:Class rdf:about="http://www.wikidata.org/entity/Q852835"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Alberto_Nobile -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Alberto_Nobile">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Cliente"/>
+        <rdf:type rdf:resource="http://www.wikidata.org/entity/Q852835"/>
+        <bicycle:guida rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Specialized_Enduro"/>
+        <bicycle:possiedeOrdine rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Ordine2"/>
+        <rdfs:comment>Cliente di esempio</rdfs:comment>
+        <rdfs:label>Alberto_Nobile</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Anna_Selleri -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Anna_Selleri">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Cliente"/>
+        <rdf:type rdf:resource="http://www.wikidata.org/entity/Q852835"/>
+        <bicycle:guida rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Specialized_Diverge"/>
+        <bicycle:possiedeOrdine rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Ordine3"/>
+        <rdfs:comment>Cliente di esempio</rdfs:comment>
+        <rdfs:label>Anna_Selleri</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Giovanni_Taccagno -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Giovanni_Taccagno">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Cliente"/>
+        <rdf:type rdf:resource="http://www.wikidata.org/entity/Q852835"/>
+        <bicycle:guida rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Specialized_Epic"/>
+        <bicycle:possiedeOrdine rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Ordine1"/>
+        <rdfs:comment>Cliente di BRO intento ad affittare una bicicletta</rdfs:comment>
+        <rdfs:label>Giovanni_Taccagno</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Ordine1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Ordine1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Ordine"/>
+        <bicycle:effettuatoDa rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Giovanni_Taccagno"/>
+        <bicycle:riguardaBicicletta rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Specialized_Epic"/>
+        <bicycle:haDataFine rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-02-05T17:00:00</bicycle:haDataFine>
+        <bicycle:haDataInizio rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-01-30T08:00:00</bicycle:haDataInizio>
+        <rdfs:comment>Esempio di ordine di affitto di una bicicletta</rdfs:comment>
+        <rdfs:label>Ordine1</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Ordine2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Ordine2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Ordine"/>
+        <bicycle:effettuatoDa rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Alberto_Nobile"/>
+        <bicycle:riguardaBicicletta rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Specialized_Enduro"/>
+        <bicycle:haDataFine rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-02-15T08:00:00</bicycle:haDataFine>
+        <bicycle:haDataInizio rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-01-31T08:00:00</bicycle:haDataInizio>
+        <rdfs:comment>Esempio di ordine di affitto di una bicicletta</rdfs:comment>
+        <rdfs:label>Ordine2</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Ordine3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Ordine3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Ordine"/>
+        <bicycle:effettuatoDa rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Anna_Selleri"/>
+        <bicycle:riguardaBicicletta rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Specialized_Diverge"/>
+        <bicycle:haDataFine rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-02-28T08:00:00</bicycle:haDataFine>
+        <bicycle:haDataInizio rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-01-20T08:00:00</bicycle:haDataInizio>
+        <rdfs:comment>Esempio di ordine di affitto di una bicicletta</rdfs:comment>
+        <rdfs:label>Ordine3</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Scott_Addict_Gravel -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Scott_Addict_Gravel">
+        <rdf:type rdf:resource="http://purl.org/vso/ns#Bicycle"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta_da_Strada"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Corsa"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Gravel"/>
+        <rdf:type rdf:resource="http://www.wikidata.org/entity/Q6453072"/>
+        <bicycle:monta rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertone_gravel"/>
+        <entity:P527 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertone_gravel"/>
+        <bicycle:disponibile rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</bicycle:disponibile>
+        <bicycle:prezzo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">80</bicycle:prezzo>
+        <bicycle:taglia>S</bicycle:taglia>
+        <rdfs:comment>La SCOTT Addict Gravel RC ti porta velocemente al traguardo. Più progressiva, con maggiore controllo e più supporti, questa bici pronta per l’avventura è il tuo biglietto vincente, ovunque.
+
+Notare che le specifiche delle bici sono soggette a cambiamenti senza alcun preavviso</rdfs:comment>
+        <rdfs:label>Scott_Addict_Gravel</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Scott_Addict_RC -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Scott_Addict_RC">
+        <rdf:type rdf:resource="http://purl.org/vso/ns#Bicycle"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta_da_Strada"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Corsa"/>
+        <rdf:type rdf:resource="http://www.wikidata.org/entity/Q6453072"/>
+        <bicycle:monta rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertone_strada"/>
+        <entity:P527 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertone_strada"/>
+        <bicycle:disponibile rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</bicycle:disponibile>
+        <bicycle:prezzo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">100</bicycle:prezzo>
+        <bicycle:taglia>L</bicycle:taglia>
+        <rdfs:comment>Leggera? Ovviamente. Veloce? Puoi scommetterci. Ora con più integrazione che mai, la Addict RC Ultimate ti offre tutto il vantaggio competitivo di cui hai bisogno: potrai vincere i GPM uno per uno, fare lo sprint verso la cima della montagna o farti valere nella tua criterium locale.
+
+Notare che le specifiche delle bici sono soggette a cambiamenti senza alcun preavviso</rdfs:comment>
+        <rdfs:label>Scott_Addict_RC</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Scott_Gambler -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Scott_Gambler">
+        <rdf:type rdf:resource="http://purl.org/vso/ns#Bicycle"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta_da_Mountainbike"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#DownHill"/>
+        <rdf:type rdf:resource="http://www.wikidata.org/entity/Q223705"/>
+        <bicycle:monta rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_DH"/>
+        <bicycle:monta rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_220mm"/>
+        <bicycle:monta rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#sospensioni_full"/>
+        <entity:P527 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_DH"/>
+        <entity:P527 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_220mm"/>
+        <entity:P527 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#sospensioni_full"/>
+        <bicycle:disponibile rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</bicycle:disponibile>
+        <bicycle:escursione rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">200</bicycle:escursione>
+        <bicycle:prezzo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">130</bicycle:prezzo>
+        <bicycle:taglia>M</bicycle:taglia>
+        <rdfs:comment>La Gambler Tuned è una mountain bike da downhill progettata per una cosa solamente: velocità pura. L’abbiamo fatta per permetterti di riuscire a percorrere traiettorie che non avresti mai pensato fossero possibili. L’abbiamo creata in modo che quando parti dal cancelletto di partenza, l’unica cosa che ti tratterrà sarà… te stesso. Con anni di sviluppo in gara mescolati con la nostra competenza nel carbonio, questa bici è la risposta alle necessità delle gare di downhill. La Gambler, semplicemente veloce.</rdfs:comment>
+        <rdfs:label>Scott_Gambler</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Scott_Genius -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Scott_Genius">
+        <rdf:type rdf:resource="http://purl.org/vso/ns#Bicycle"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta_da_Mountainbike"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Enduro"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Trail"/>
+        <rdf:type rdf:resource="http://www.wikidata.org/entity/Q223705"/>
+        <bicycle:monta rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_Trail"/>
+        <bicycle:monta rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_180mm"/>
+        <bicycle:monta rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#sospensioni_full"/>
+        <entity:P527 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_Trail"/>
+        <entity:P527 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_180mm"/>
+        <entity:P527 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#sospensioni_full"/>
+        <bicycle:disponibile rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</bicycle:disponibile>
+        <bicycle:escursione rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">140</bicycle:escursione>
+        <bicycle:prezzo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">80</bicycle:prezzo>
+        <bicycle:taglia>L</bicycle:taglia>
+        <rdfs:comment>La Genius è sempre stata la nostra bici favorita. Sospensioni intelligenti, caratteristiche migliori e il design più brillante portano a un’incredibile bici da trail che non ne ha mai abbastanza. La nuovissima Genius, per affrontare qualsiasi trail in ogni momento.
+
+Notare che le specifiche della bici sono soggette a cambiamenti senza alcun preavviso.</rdfs:comment>
+        <rdfs:label>Scott_Genius</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Scott_Ransom -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Scott_Ransom">
+        <rdf:type rdf:resource="http://purl.org/vso/ns#Bicycle"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta_da_Mountainbike"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#DownHill"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Enduro"/>
+        <rdf:type rdf:resource="http://www.wikidata.org/entity/Q223705"/>
+        <bicycle:monta rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_Enduro"/>
+        <bicycle:monta rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_200mm"/>
+        <bicycle:monta rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#sospensioni_full"/>
+        <entity:P527 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_Enduro"/>
+        <entity:P527 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_200mm"/>
+        <entity:P527 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#sospensioni_full"/>
+        <bicycle:disponibile rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</bicycle:disponibile>
+        <bicycle:escursione rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">160</bicycle:escursione>
+        <bicycle:prezzo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">120</bicycle:prezzo>
+        <bicycle:taglia>M</bicycle:taglia>
+        <rdfs:comment>Ecco la nuovissima SCOTT Ransom. La nostra ultima versione della Ransom è stata progettata senza compromessi per dare le massime prestazioni in discesa e per offrire una guida che ispira sempre sicurezza. La geometria azzeccata e una cinematica delle sospensioni incredibile danno vita ad una bici che non dirà mai “no”. Non ti trattenere, ti meriti una Ransom!</rdfs:comment>
+        <rdfs:label>Scott_Ransom</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Scott_Scale_940 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Scott_Scale_940">
+        <rdf:type rdf:resource="http://purl.org/vso/ns#Bicycle"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta_da_Mountainbike"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#XC"/>
+        <rdf:type rdf:resource="http://www.wikidata.org/entity/Q223705"/>
+        <bicycle:monta rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_XC"/>
+        <bicycle:monta rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_160mm"/>
+        <bicycle:monta rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#reggisella_telescopico"/>
+        <bicycle:monta rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#sospensioni_front"/>
+        <entity:P527 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_XC"/>
+        <entity:P527 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_160mm"/>
+        <entity:P527 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#reggisella_telescopico"/>
+        <entity:P527 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#sospensioni_front"/>
+        <bicycle:disponibile rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</bicycle:disponibile>
+        <bicycle:escursione rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">100</bicycle:escursione>
+        <bicycle:prezzo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">40</bicycle:prezzo>
+        <bicycle:taglia>M</bicycle:taglia>
+        <rdfs:comment>Con l’equilibrio del DNA della NUOVISSIMA Scale, abbiamo creato una razza completamente nuova nel mondo delle mountain bike hardtail. Una geometria ispirata alle corse, unita a un design diretto e deciso, dà alla nuovissima linea Scale 900 il suo carattere distintivo e il suo look aggressivo, è una bici che ostenta con orgoglio le sue caratteristiche definitive. Questo mezzo è pronto per tutto, e tu?</rdfs:comment>
+        <rdfs:label>Scott_Scale_940</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Scott_Spark_RC -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Scott_Spark_RC">
+        <rdf:type rdf:resource="http://purl.org/vso/ns#Bicycle"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta_da_Mountainbike"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Trail"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#XC"/>
+        <rdf:type rdf:resource="http://www.wikidata.org/entity/Q223705"/>
+        <bicycle:monta rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_XC"/>
+        <bicycle:monta rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_160mm"/>
+        <bicycle:monta rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_180mm"/>
+        <bicycle:monta rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#sospensioni_full"/>
+        <entity:P527 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_XC"/>
+        <entity:P527 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_160mm"/>
+        <entity:P527 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_180mm"/>
+        <entity:P527 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#sospensioni_full"/>
+        <bicycle:disponibile rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</bicycle:disponibile>
+        <bicycle:escursione rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">120</bicycle:escursione>
+        <bicycle:prezzo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">150</bicycle:prezzo>
+        <bicycle:taglia>M</bicycle:taglia>
+        <rdfs:comment>La Spark RC SL è il mix perfetto della migliore ingegneria del carbonio, livelli di integrazione mai visti prima d’ora e la giusta quantità di segretezza. Volevamo rendere questa piattaforma la più veloce di sempre sia in salita che in discesa. Aumentando l’escursione, perfezionando la geometria e applicando il feedback dei migliori atleti al mondo abbiamo creato la migliore bici da gare cross country. Se credi che la velocità sia divertimento, allora amerai questa bici.
+
+Notare che le specifiche della bici sono soggette a cambiamenti senza alcun preavviso</rdfs:comment>
+        <rdfs:label>Scott_Spark_RC</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Specialized_Crux -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Specialized_Crux">
+        <rdf:type rdf:resource="http://purl.org/vso/ns#Bicycle"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta_da_Strada"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#CX"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Corsa"/>
+        <rdf:type rdf:resource="http://www.wikidata.org/entity/Q6453072"/>
+        <bicycle:monta rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertone_CX"/>
+        <entity:P527 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertone_CX"/>
+        <bicycle:disponibile rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</bicycle:disponibile>
+        <bicycle:prezzo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">50</bicycle:prezzo>
+        <bicycle:taglia>M</bicycle:taglia>
+        <rdfs:comment>La CruX è la bici CX più leggera al mondo, con ampia luce per gli pneumatici ed una geometria pensata per prestazioni e velocità. Ora anche il gravel si illumina di performance e leggerezza. La CruX Pro monta il gruppo SRAM Force 1 eTap AXS completo di freni a disco idraulici, leggere e resistenti ruote Roval Terra CL Disc e pneumatici Pathfinder Pro 2Bliss Ready 700x38…</rdfs:comment>
+        <rdfs:label>Specialized_Crux</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Specialized_Demo -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Specialized_Demo">
+        <rdf:type rdf:resource="http://purl.org/vso/ns#Bicycle"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta_da_Mountainbike"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#DownHill"/>
+        <rdf:type rdf:resource="http://www.wikidata.org/entity/Q223705"/>
+        <bicycle:monta rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_DH"/>
+        <bicycle:monta rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_220mm"/>
+        <entity:P527 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_DH"/>
+        <entity:P527 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_220mm"/>
+        <bicycle:disponibile rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</bicycle:disponibile>
+        <bicycle:escursione rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">200</bicycle:escursione>
+        <bicycle:prezzo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">80</bicycle:prezzo>
+        <bicycle:taglia>L</bicycle:taglia>
+        <rdfs:comment>La massima velocità è sempre stata l&apos;obiettivo principale per la progettazione delle Demo. Il design del telaio prevede la flessibilità nel montaggio delle ruote e permette al rider di montare una ruota anteriore da 29 pollici e una posteriore da 27,5. Una combinazione già testata dal Campione del Mondo Loic Bruni che cercava l&apos;equilibrio perfetto tra trazione e manovrabilità, ora anche approvata da parte dell’UCI…</rdfs:comment>
+        <rdfs:label>Specialized_Demo</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Specialized_Diverge -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Specialized_Diverge">
+        <rdf:type rdf:resource="http://purl.org/vso/ns#Bicycle"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta_da_Strada"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Corsa"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Gravel"/>
+        <rdf:type rdf:resource="http://www.wikidata.org/entity/Q6453072"/>
+        <bicycle:monta rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertone_gravel"/>
+        <entity:P527 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertone_gravel"/>
+        <bicycle:disponibile rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</bicycle:disponibile>
+        <bicycle:prezzo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">40</bicycle:prezzo>
+        <bicycle:taglia>S</bicycle:taglia>
+        <rdfs:comment>Per evadere sui sentieri in campagna, lontano dal traffico e dalla gente, ma anche per andare a tutta nella tua gara gravel preferita, la Diverge è perfetta. La gravel bike più veloce, capace e divertente che abbiamo mai prodotta. E&apos; scattante e agile sotto sforzo, stabile e sicuro se il terreno si fa impegnativo…</rdfs:comment>
+        <rdfs:label>Specialized_Diverge</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Specialized_Enduro -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Specialized_Enduro">
+        <rdf:type rdf:resource="http://purl.org/vso/ns#Bicycle"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta_da_Mountainbike"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#DownHill"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Enduro"/>
+        <rdf:type rdf:resource="http://www.wikidata.org/entity/Q223705"/>
+        <bicycle:monta rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_Enduro"/>
+        <bicycle:monta rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_200mm"/>
+        <bicycle:monta rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#sospensioni_full"/>
+        <entity:P527 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_Enduro"/>
+        <entity:P527 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_200mm"/>
+        <entity:P527 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#sospensioni_full"/>
+        <bicycle:disponibile rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</bicycle:disponibile>
+        <bicycle:escursione rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">170</bicycle:escursione>
+        <bicycle:prezzo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">60</bicycle:prezzo>
+        <bicycle:taglia>M</bicycle:taglia>
+        <rdfs:comment>L&apos;Enduro viene fornito di serie con componentistica di altissimo livello. Ottime prestazioni in downhill con l&apos;escursione di 160mm, sospensioni RockShox, potenti freni a a disco e robuste ruote in lega.</rdfs:comment>
+        <rdfs:label>Specialized_Enduro</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Specialized_Epic -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Specialized_Epic">
+        <rdf:type rdf:resource="http://purl.org/vso/ns#Bicycle"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta_da_Mountainbike"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#XC"/>
+        <rdf:type rdf:resource="http://www.wikidata.org/entity/Q223705"/>
+        <bicycle:monta rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_XC"/>
+        <bicycle:monta rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_160mm"/>
+        <bicycle:monta rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#reggisella_telescopico"/>
+        <entity:P527 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_XC"/>
+        <entity:P527 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_160mm"/>
+        <entity:P527 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#reggisella_telescopico"/>
+        <bicycle:disponibile rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</bicycle:disponibile>
+        <bicycle:escursione rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">100</bicycle:escursione>
+        <bicycle:prezzo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">40</bicycle:prezzo>
+        <bicycle:taglia>M</bicycle:taglia>
+        <rdfs:comment>Ehi tu! ... si tu, quello con il bilancino per verificare quale degli sei pneumatici uguali sullo scaffale sia il più leggero ... Certo qualcuno potrebbe definirti leggermente ossessionato, ma non ti preoccupare, la Epic parla la tua stessa lingua…</rdfs:comment>
+        <rdfs:label>Specialized_Epic</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Specialized_Epic_EVO -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Specialized_Epic_EVO">
+        <rdf:type rdf:resource="http://purl.org/vso/ns#Bicycle"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta_da_Mountainbike"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Trail"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#XC"/>
+        <rdf:type rdf:resource="http://www.wikidata.org/entity/Q223705"/>
+        <bicycle:monta rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_XC"/>
+        <bicycle:monta rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_180mm"/>
+        <bicycle:monta rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#reggisella_telescopico"/>
+        <entity:P527 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_XC"/>
+        <entity:P527 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_180mm"/>
+        <entity:P527 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#reggisella_telescopico"/>
+        <bicycle:disponibile rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</bicycle:disponibile>
+        <bicycle:escursione rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">120</bicycle:escursione>
+        <bicycle:prezzo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">100</bicycle:prezzo>
+        <bicycle:taglia>M</bicycle:taglia>
+        <rdfs:comment>Più si riesce ad alleggerire un telaio, più si andrà veloce. Con il telaio EVO più leggero ed una geometria Progressive XC più aggressivo che mai la S-Works Epic EVO offre un rapporto capacità/peso eccezionale.Sulle Epic EVO aumenta di 20mm la corsa della forcella e di 10mm l&apos;escursione sulla ruota posteriore, ma con uno sforzo notevole siamo riusciti ad implementare queste variazioni in modo tale da fare una differenza enorme nell&apos;affrontare il singletrack…</rdfs:comment>
+        <rdfs:label>Specialized_Epic_EVO</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Specialized_Epic_HT -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Specialized_Epic_HT">
+        <rdf:type rdf:resource="http://purl.org/vso/ns#Bicycle"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta_da_Mountainbike"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#XC"/>
+        <rdf:type rdf:resource="http://www.wikidata.org/entity/Q223705"/>
+        <bicycle:monta rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_XC"/>
+        <bicycle:monta rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_160mm"/>
+        <bicycle:monta rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#sospensioni_front"/>
+        <entity:P527 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_XC"/>
+        <entity:P527 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_160mm"/>
+        <entity:P527 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#sospensioni_front"/>
+        <bicycle:disponibile rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</bicycle:disponibile>
+        <bicycle:escursione rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">100</bicycle:escursione>
+        <bicycle:prezzo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">30</bicycle:prezzo>
+        <bicycle:taglia>S</bicycle:taglia>
+        <rdfs:comment>Li conosci gli sguardi. Quelli che dicono ma-qui-pedalerà-per-davvero-una-hardtail ? Prepàrati a riceverne di più, di quegli sguardi. L&apos;Epic Hardtail è veloce, leggera e capace e stabilisce gli nuovi standard di quello che è possibile fare con una macchina da corsa del cross-country…</rdfs:comment>
+        <rdfs:label>Specialized_Epic_HT</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Specialized_PSeries -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Specialized_PSeries">
+        <rdf:type rdf:resource="http://purl.org/vso/ns#Bicycle"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta_da_Mountainbike"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Dirt/BMX"/>
+        <rdf:type rdf:resource="http://www.wikidata.org/entity/Q223705"/>
+        <bicycle:monta rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_BMX/Dirt"/>
+        <entity:P527 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_BMX/Dirt"/>
+        <bicycle:disponibile rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</bicycle:disponibile>
+        <bicycle:prezzo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">40</bicycle:prezzo>
+        <bicycle:taglia>M</bicycle:taglia>
+        <rdfs:comment>Il telaio delle P.Series è stato completamente rivisto per creare una bici divertente e resistente che invoglierà a pedalare per tutta la vita.SEMPLICITA&apos; - Per chi cerca sempre di migliorarsi, eliminare tutte le altre variabili è fondamentale. Il telaio in lega leggera con passaggio interno dei cavi è molto resistente, perfettamente adatto ai rigori del dirt jumping…</rdfs:comment>
+        <rdfs:label>Specialized_PSeries</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Specialized_Stumpjumper -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Specialized_Stumpjumper">
+        <rdf:type rdf:resource="http://purl.org/vso/ns#Bicycle"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta_da_Mountainbike"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Enduro"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Trail"/>
+        <rdf:type rdf:resource="http://www.wikidata.org/entity/Q223705"/>
+        <bicycle:monta rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_Trail"/>
+        <bicycle:monta rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_200mm"/>
+        <entity:P527 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_Trail"/>
+        <entity:P527 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_200mm"/>
+        <bicycle:disponibile rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</bicycle:disponibile>
+        <bicycle:escursione rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">140</bicycle:escursione>
+        <bicycle:prezzo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">60</bicycle:prezzo>
+        <bicycle:taglia>M</bicycle:taglia>
+        <rdfs:comment>Con la Stumpjumper Expert siamo riusciti a catturare quella sensazione che provi quando sali in sella alla tua nuova bici, una trailbike così agile, vivace e perfetta per il trail che sembra un&apos;estensione del tuo corpo. Salita dura? Nessun problema. Discesa paurosa, facile…</rdfs:comment>
+        <rdfs:label>Specialized_Stumpjumper</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Specialized_Tarmac -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Specialized_Tarmac">
+        <rdf:type rdf:resource="http://purl.org/vso/ns#Bicycle"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta_da_Strada"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Corsa"/>
+        <rdf:type rdf:resource="http://www.wikidata.org/entity/Q6453072"/>
+        <bicycle:monta rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertone_strada"/>
+        <entity:P527 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertone_strada"/>
+        <bicycle:disponibile rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</bicycle:disponibile>
+        <bicycle:prezzo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">120</bicycle:prezzo>
+        <bicycle:taglia>L</bicycle:taglia>
+        <rdfs:comment>Nessuna bicicletta è veloce quanto il Tarmac SL8 grazie a una combinazione di aerodinamica, leggerezza e qualità di guida precedentemente ritenuta impossibile. Dopo otto generazioni e oltre due decenni di sviluppo, non è solo il Tarmac più veloce di sempre: è la bici da corsa più veloce del mondo…</rdfs:comment>
+        <rdfs:label>Specialized_Tarmac</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#categoria_CX -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#categoria_CX">
+        <rdf:type rdf:resource="http://purl.org/vso/ns#Bicycle"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta_da_Strada"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#CX"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Corsa"/>
+        <rdf:type rdf:resource="http://www.wikidata.org/entity/Q6453072"/>
+        <bicycle:monta rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertone_CX"/>
+        <entity:P527 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertone_CX"/>
+        <rdfs:comment>E&apos; una bicicletta progettata specificamente per le gare di ciclocross</rdfs:comment>
+        <rdfs:label>categoria_CX</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#categoria_Corsa -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#categoria_Corsa">
+        <rdf:type rdf:resource="http://purl.org/vso/ns#Bicycle"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta_da_Strada"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Corsa"/>
+        <rdf:type rdf:resource="http://www.wikidata.org/entity/Q6453072"/>
+        <rdfs:comment>Tipo di bicicletta progettata per il ciclismo su strada, per effettuare competizioni in linea o a tappe su distanze più o meno lunghe</rdfs:comment>
+        <rdfs:label>categoria_Corsa</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#categoria_DH -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#categoria_DH">
+        <rdf:type rdf:resource="http://purl.org/vso/ns#Bicycle"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta_da_Mountainbike"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#DownHill"/>
+        <rdf:type rdf:resource="http://www.wikidata.org/entity/Q223705"/>
+        <rdfs:comment>Le mountain bike da downhill sono sviluppate intorno all&apos;omonima competizione: una gara di discesa a tempo su tracciati variabilmente veloci e tecnici. Monta enormi freni da 220mm di diametro e sospensioni da 200mm di escursione.</rdfs:comment>
+        <rdfs:label xml:lang="it">categoria_DH</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#categoria_Enduro -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#categoria_Enduro">
+        <rdf:type rdf:resource="http://purl.org/vso/ns#Bicycle"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta_da_Mountainbike"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Enduro"/>
+        <rdf:type rdf:resource="http://www.wikidata.org/entity/Q223705"/>
+        <rdfs:comment>Le mountain bike da enduro sono simili alle all mountain, ma in genere si tratta di mezzi da competizione.  Generalmente i freni sono da 200mm di diametro e le sospensioni da 160mm di escursione.</rdfs:comment>
+        <rdfs:label>categoria_Enduro</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#categoria_Gravel -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#categoria_Gravel">
+        <rdf:type rdf:resource="http://purl.org/vso/ns#Bicycle"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta_da_Strada"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Corsa"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Gravel"/>
+        <rdf:type rdf:resource="http://www.wikidata.org/entity/Q6453072"/>
+        <bicycle:monta rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertone_gravel"/>
+        <entity:P527 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertone_gravel"/>
+        <rdfs:comment>La bicicletta gravel &quot;moderna&quot;, come categoria, si è evoluta negli anni 2000, adottando la tecnologia delle biciclette da strada , delle biciclette da ciclocross e delle mountain bike.</rdfs:comment>
+        <rdfs:label>categoria_Gravel</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#categoria_Trail -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#categoria_Trail">
+        <rdf:type rdf:resource="http://purl.org/vso/ns#Bicycle"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta_da_Mountainbike"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Trail"/>
+        <rdf:type rdf:resource="http://www.wikidata.org/entity/Q223705"/>
+        <rdfs:comment>Biciclettta full suspended progettata per il giusto compromesso di pedalabilità tra discesa e salita, affidabilità e robustezza, e comodità di guida-seduta. Monta, freni da 180mm di diametro e sospensioni da 140mm di escursione.</rdfs:comment>
+        <rdfs:label>categoria_Trail</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#categoria_XC -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#categoria_XC">
+        <rdf:type rdf:resource="http://purl.org/vso/ns#Bicycle"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta_da_Mountainbike"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#XC"/>
+        <rdf:type rdf:resource="http://www.wikidata.org/entity/Q223705"/>
+        <rdfs:comment>Concepita per la prestazione e la velocità, può essere front (ammortizzata solo anteriormente) o full (integra una sospensione posteriore).  E’ caratterizzata da un telaio leggero, freni da 160mm di diametro e sospensioni da 100mm di escursione.</rdfs:comment>
+        <rdfs:label>categoria_XC</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#cerchi -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#cerchi">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Componenti"/>
+        <rdf:type rdf:resource="http://www.wikidata.org/entity/Q30246160"/>
+        <rdfs:comment>Il cerchio di una ruota per bicicletta è la parte esterna della ruota stessa, collegato al mozzo mediante i raggi, ed accoglie lo pneumatico e la camera d&apos;aria.</rdfs:comment>
+        <rdfs:label>cerchi</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertone_CX -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertone_CX">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Componenti"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_CX"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_da_strada"/>
+        <rdf:type rdf:resource="http://www.wikidata.org/entity/Q30246160"/>
+        <rdfs:comment>Adesione e prestazioni grazie alla gomma a doppia densità. Il suo profilo a rampone consente di mantenere una buona presa anche in condizioni di bagnato.</rdfs:comment>
+        <rdfs:label>copertone_CX</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertone_gravel -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertone_gravel">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Componenti"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_Gravel"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_da_strada"/>
+        <rdf:type rdf:resource="http://www.wikidata.org/entity/Q30246160"/>
+        <rdfs:comment>Presentano una larghezza che va dai 28 ai 35 mm. Questi copertoni necessitano di una minore pressione dell&apos;aria e permettono una condotta piuttosto veloce. I disegni del battistrada garantiscono una maggiore presa sul terreno in caso di fango o su terreni sdrucciolevoli.</rdfs:comment>
+        <rdfs:label>copertone_gravel</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertone_largo -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertone_largo">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Componenti"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_da_mountainbike"/>
+        <rdf:type rdf:resource="http://www.wikidata.org/entity/Q30246160"/>
+        <rdfs:comment>Tipo generico di copertone da MTB</rdfs:comment>
+        <rdfs:label>copertone_largo</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertone_strada -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertone_strada">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Componenti"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_Corsa"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_da_strada"/>
+        <rdf:type rdf:resource="http://www.wikidata.org/entity/Q30246160"/>
+        <rdfs:comment>I copertoni da bici da corsa sono disponibili in diverse larghezze, da 23 mm a 28 mm. La larghezza del copertone influisce sulla resistenza al rotolamento, sul comfort e sulla stabilità. I copertoni più stretti sono più veloci, ma meno confortevoli e meno stabili su superfici sconnesse. I copertoni più larghi sono più confortevoli e stabili, ma meno veloci.</rdfs:comment>
+        <rdfs:label>copertone_strada</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertone_stretto -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertone_stretto">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Componenti"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_da_strada"/>
+        <rdf:type rdf:resource="http://www.wikidata.org/entity/Q30246160"/>
+        <rdfs:comment>Tipo generico di copertone da strada</rdfs:comment>
+        <rdfs:label>copertone_stretto</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_DH -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_DH">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Componenti"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_DownHill"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_da_mountainbike"/>
+        <rdf:type rdf:resource="http://www.wikidata.org/entity/Q30246160"/>
+        <rdfs:comment>I copertoni da Downhill sono caratterizzati da una serie di caratteristiche che li rendono adatti a questo tipo di utilizzo, tra cui:
+
+Larghezza: i copertoni da Downhill sono generalmente più larghi dei copertoni per altre discipline MTB, con larghezze che vanno da 2,4 pollici a 2,8 pollici. La larghezza maggiore offre una maggiore superficie di contatto con il terreno, che migliora la trazione e la stabilità.
+
+
+Copertone da Downhill largo
+Tacchetti: i copertoni da Downhill hanno tasselli aggressivi che forniscono una maggiore trazione su terreni scivolosi e accidentati. I tasselli sono solitamente disposti in un profilo a V o a W per migliorare la trazione in curva.
+
+
+Copertone da Downhill con tasselli
+Mescola di gomma: la mescola di gomma dei copertoni da DownHill è generalmente morbida per fornire una maggiore aderenza. Tuttavia, la mescola deve anche essere resistente alle forature.</rdfs:comment>
+        <rdfs:label>copertoni_DH</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_Enduro -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_Enduro">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Componenti"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_Enduro"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_da_mountainbike"/>
+        <rdf:type rdf:resource="http://www.wikidata.org/entity/Q30246160"/>
+        <rdfs:comment>Copertone da Enduro: pneumatico per bicicletta progettato per essere utilizzato in percorsi di montagna tecnici e impegnativi. È caratterizzato da una larghezza media, tasselli moderatamente aggressivi e una mescola di gomma intermedia.</rdfs:comment>
+        <rdfs:label>copertoni_Enduro</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_Trail -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_Trail">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Componenti"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_Trail"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_da_mountainbike"/>
+        <rdf:type rdf:resource="http://www.wikidata.org/entity/Q30246160"/>
+        <rdfs:comment>Pneumatico per bicicletta progettato per essere utilizzato in percorsi di montagna misti, che includono terreni tecnici e impegnativi, ma anche tratti più scorrevoli. È caratterizzato da una larghezza media, tasselli moderatamente aggressivi e una mescola di gomma intermedia.</rdfs:comment>
+        <rdfs:label>copertoni_Trail</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_XC -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_XC">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Componenti"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_XC"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_da_mountainbike"/>
+        <rdf:type rdf:resource="http://www.wikidata.org/entity/Q30246160"/>
+        <rdfs:comment>Pneumatico per bicicletta progettato per essere utilizzato in percorsi di montagna veloci e scorrevoli. È caratterizzato da una larghezza stretta, tasselli poco aggressivi e una mescola di gomma dura.</rdfs:comment>
+        <rdfs:label>copertoni_XC</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#forcella_rigida -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#forcella_rigida">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Componenti"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_da_strada"/>
+        <rdf:type rdf:resource="http://www.wikidata.org/entity/Q30246160"/>
+        <rdfs:comment>La forcella rigida è un componente della bicicletta da strada che collega il telaio alla ruota anteriore. È costituita da un tubo dritto o conico che termina in un morsetto per il cerchio.
+
+Le forcelle rigide sono caratterizzate da una maggiore rigidità rispetto alle forcelle ammortizzate. Questo conferisce alla bicicletta una maggiore efficienza e velocità. Tuttavia, le forcelle rigide possono essere meno confortevoli su terreni sconnessi.
+
+Le forcelle rigide sono disponibili in diversi materiali, tra cui alluminio, fibra di carbonio e acciaio. I modelli in alluminio sono i più economici e leggeri, mentre i modelli in fibra di carbonio sono i più rigidi e costosi. I modelli in acciaio sono un buon compromesso tra rigidità e peso.</rdfs:comment>
+        <rdfs:label>forcella_rigida</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#frame -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#frame">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Componenti"/>
+        <rdf:type rdf:resource="http://www.wikidata.org/entity/Q30246160"/>
+        <owl:sameAs rdf:resource="http://www.wikidata.org/entity/Q167130"/>
+        <rdfs:comment>Telaio della bicicletta</rdfs:comment>
+        <rdfs:label>frame</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.wikidata.org/entity/Q167130 -->
+
+    <owl:NamedIndividual rdf:about="http://www.wikidata.org/entity/Q167130"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_160mm -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_160mm">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Componenti"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_XC"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_da_mountainbike"/>
+        <rdf:type rdf:resource="http://www.wikidata.org/entity/Q30246160"/>
+        <rdfs:comment>I freni da 160 mm sono i più piccoli e leggeri disponibili. Sono ideali per le discipline XC, dove la leggerezza e l&apos;efficienza sono fondamentali. I freni da 160 mm forniscono un&apos;adeguata potenza frenante per la maggior parte dei percorsi XC, ma possono essere insufficienti per frenate forti o su terreni tecnici.</rdfs:comment>
+        <rdfs:label>freni_160mm</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_180mm -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_180mm">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Componenti"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_Trail"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_da_mountainbike"/>
+        <rdf:type rdf:resource="http://www.wikidata.org/entity/Q30246160"/>
+        <rdfs:comment>I freni da 180 mm sono una buona scelta per le discipline Trail e Enduro. Offrono una potenza frenante maggiore rispetto ai freni da 160 mm, rendendoli più efficaci su terreni tecnici e in frenate forti. I freni da 180 mm sono una buona scelta per i ciclisti che desiderano un&apos;elevata potenza frenante senza sacrificare troppo la leggerezza.</rdfs:comment>
+        <rdfs:label>freni_180mm</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_200mm -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_200mm">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Componenti"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_Enduro"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_da_mountainbike"/>
+        <rdf:type rdf:resource="http://www.wikidata.org/entity/Q30246160"/>
+        <rdfs:comment>I freni da 200 mm sono i più diffusi nelle discipline Enduro e DH. Offrono la massima potenza frenante disponibile, rendendoli indispensabili per affrontare terreni impegnativi e frenate forti. I freni da 200 mm sono una buona scelta per i ciclisti che desiderano il massimo in termini di potenza frenante e sicurezza.</rdfs:comment>
+        <rdfs:label>freni_200mm</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_220mm -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_220mm">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Componenti"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_DownHill"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_da_mountainbike"/>
+        <rdf:type rdf:resource="http://www.wikidata.org/entity/Q30246160"/>
+        <rdfs:comment>I freni da 220 mm sono la scelta più estrema disponibile. Offrono una potenza frenante ancora maggiore rispetto ai freni da 200 mm, ma sono anche i più pesanti. I freni da 220 mm sono una buona scelta per i ciclisti che gareggiano a livello professionale o che desiderano il massimo in termini di potenza frenante e sicurezza.</rdfs:comment>
+        <rdfs:label>freni_220mm</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#manubrio_a_goccia -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#manubrio_a_goccia">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Componenti"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_da_strada"/>
+        <rdf:type rdf:resource="http://www.wikidata.org/entity/Q30246160"/>
+        <rdfs:comment>Il manubrio a goccia è un tipo di manubrio da bicicletta caratterizzato da una forma curva che ricorda la goccia di una lacrima. È il tipo di manubrio più comunemente utilizzato nelle biciclette da corsa, ma può essere utilizzato anche su altre tipologie di biciclette, come CX e gravel</rdfs:comment>
+        <rdfs:label>manubrio_a_goccia</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#manubrio_flat -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#manubrio_flat">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Componenti"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_da_mountainbike"/>
+        <rdf:type rdf:resource="http://www.wikidata.org/entity/Q30246160"/>
+        <rdfs:comment>Il manubrio flat è un tipo di manubrio da bicicletta caratterizzato da una forma piatta. È il tipo di manubrio più comunemente utilizzato sulle biciclette da mountain bike, ma può essere utilizzato anche su altre tipologie di biciclette.</rdfs:comment>
+        <rdfs:label>manubrio_flat</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#reggisella_telescopico -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#reggisella_telescopico">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Componenti"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_da_mountainbike"/>
+        <rdf:type rdf:resource="http://www.wikidata.org/entity/Q30246160"/>
+        <rdfs:comment>Il reggisella telescopico è un componente della bicicletta che consente al ciclista di regolare l&apos;altezza della sella in modo rapido e semplice. È un componente comune nelle biciclette da mountain bike, ma può essere trovato anche in altre tipologie di biciclette, come le biciclette da corsa e le gravel.</rdfs:comment>
+        <rdfs:label>reggisella_telescopico</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#sella_rigida -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#sella_rigida">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Componenti"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_da_strada"/>
+        <rdf:type rdf:resource="http://www.wikidata.org/entity/Q30246160"/>
+        <rdfs:comment>Le selle rigide sono spesso utilizzate nelle biciclette da corsa, dove la leggerezza e l&apos;efficienza sono fondamentali. Possono essere utilizzate anche in altre tipologie di biciclette, come le biciclette da ciclocross e le biciclette da gravel.</rdfs:comment>
+        <rdfs:label>sella_rigida</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#sospensioni_front -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#sospensioni_front">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Componenti"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_da_mountainbike"/>
+        <rdf:type rdf:resource="http://www.wikidata.org/entity/Q30246160"/>
+        <rdfs:comment>Le sospensioni front, o forcelle ammortizzate, sono un componente della bicicletta da mountain bike che collega il telaio alla ruota anteriore. Sono costituite da un tubo dritto o conico che termina in un morsetto per il cerchio.</rdfs:comment>
+        <rdfs:label>sospensioni_front</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#sospensioni_full -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#sospensioni_full">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Componenti"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_da_mountainbike"/>
+        <rdf:type rdf:resource="http://www.wikidata.org/entity/Q30246160"/>
+        <rdfs:comment>Le sospensioni full, o sospensioni complete, sono un tipo di sospensione per bicicletta che collega il telaio a entrambe le ruote. Sono costituite da una forcella ammortizzata anteriore e da un ammortizzatore posteriore.</rdfs:comment>
+        <rdfs:label>sospensioni_full</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#trasmissione -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#trasmissione">
+        <owl:sameAs rdf:resource="http://www.wikidata.org/entity/Q16259746"/>
+        <rdfs:comment>La trasmissione di una bicicletta è l&apos;insieme dei componenti che consentono di trasmettere il movimento dai pedali alle ruote. È un componente fondamentale della bicicletta, in quanto consente al ciclista di regolare la velocità e la potenza di pedalata.</rdfs:comment>
+        <rdfs:label>trasmissione</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.wikidata.org/entity/Q16259746 -->
+
+    <owl:NamedIndividual rdf:about="http://www.wikidata.org/entity/Q16259746"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#categoria_BMX/DirtJumps -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#categoria_BMX/DirtJumps">
+        <rdf:type rdf:resource="http://purl.org/vso/ns#Bicycle"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta_da_Mountainbike"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Dirt/BMX"/>
+        <rdf:type rdf:resource="http://www.wikidata.org/entity/Q223705"/>
+        <bicycle:monta rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_BMX/Dirt"/>
+        <entity:P527 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_BMX/Dirt"/>
+        <rdfs:comment>Biciclette progettate per l’omonima disciplina che prevede salti caratterizzati da complesse acrobazie. Le specifiche di questo mezzo variano molto in base alla filosofia dei vari brand. Ciò che le accomuna sono i cerchi da 24 o 26 pollici, con copertoni generalmente slick.</rdfs:comment>
+        <rdfs:label>categoria_BMX/DirtJumps</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_BMX/Dirt -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_BMX/Dirt">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Componenti"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_da_mountainbike"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#componenti_Dirt/BMX"/>
+        <rdf:type rdf:resource="http://www.wikidata.org/entity/Q30246160"/>
+        <rdfs:comment>Pneumatici con battistrada abbastanza liscio e duro ma dotati di tacchetti sui lati per fare presa in curva.</rdfs:comment>
+        <rdfs:label>copertoni_BMX/Dirt</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.wikidata.org/entity/Q16259746 -->
+
+    <owl:NamedIndividual rdf:about="http://www.wikidata.org/entity/Q16259746"/>
+    
+
+
+    <!-- http://www.wikidata.org/entity/Q167130 -->
+
+    <owl:NamedIndividual rdf:about="http://www.wikidata.org/entity/Q167130">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Componenti"/>
+        <rdf:type rdf:resource="http://www.wikidata.org/entity/Q30246160"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#cerchi"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertone_CX"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertone_gravel"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertone_largo"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertone_strada"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertone_stretto"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_DH"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_Enduro"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_Trail"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_XC"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#forcella_rigida"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#frame"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_160mm"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_180mm"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_200mm"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_220mm"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#manubrio_a_goccia"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#manubrio_flat"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#reggisella_telescopico"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#sella_rigida"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#sospensioni_front"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#sospensioni_full"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#trasmissione"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_BMX/Dirt"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#cerchi"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertone_largo"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertone_stretto"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_DH"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_Enduro"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_Trail"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_XC"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#forcella_rigida"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#frame"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_160mm"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_180mm"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_200mm"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#freni_220mm"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#manubrio_a_goccia"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#manubrio_flat"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#reggisella_telescopico"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#sella_rigida"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#sospensioni_front"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#sospensioni_full"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#trasmissione"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#copertoni_BMX/Dirt"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Rules
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#bici">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#ordine">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#bicicletta">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#x">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#e">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment>Se una bicicletta monta un manubrio a goccia, allora si tratta di una Bicicletta da strada</rdfs:comment>
+        <rdfs:label>Manubrio</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#bici"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#monta"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#bici"/>
+                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#manubrio_a_goccia"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta_da_Strada"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#bici"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment>Se un ordine coinvolge una bicicletta, allora questa deve essere marchiata come non disponibile</rdfs:comment>
+        <rdfs:label>Ordine</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Ordine"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#ordine"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#riguardaBicicletta"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#ordine"/>
+                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#bicicletta"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta"/>
+                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#bicicletta"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#disponibile"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#bicicletta"/>
+                        <swrl:argument2 rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</swrl:argument2>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment>Se le sospensioni hanno escursione compresa tra 100 e 120mm, allora si tratta di una bicicletta da XC</rdfs:comment>
+        <rdfs:label>XC SAG</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta_da_Mountainbike"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#x"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#escursione"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#x"/>
+                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#e"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                        <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#greaterThanOrEqual"/>
+                                        <swrl:arguments>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                <rdf:first rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#e"/>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">100</rdf:first>
+                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </swrl:arguments>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                                <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#lessThanOrEqual"/>
+                                                <swrl:arguments>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                        <rdf:first rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#e"/>
+                                                        <rdf:rest>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">120</rdf:first>
+                                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                            </rdf:Description>
+                                                        </rdf:rest>
+                                                    </rdf:Description>
+                                                </swrl:arguments>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#XC"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#x"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment>Se le sospensioni hanno escursione compresa tra 120 e 140mm, allora si tratta di una bicicletta da Trail</rdfs:comment>
+        <rdfs:label>Trail SAG</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta_da_Mountainbike"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#x"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#escursione"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#x"/>
+                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#e"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                        <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#greaterThanOrEqual"/>
+                                        <swrl:arguments>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                <rdf:first rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#e"/>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">120</rdf:first>
+                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </swrl:arguments>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                                <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#lessThanOrEqual"/>
+                                                <swrl:arguments>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                        <rdf:first rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#e"/>
+                                                        <rdf:rest>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">140</rdf:first>
+                                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                            </rdf:Description>
+                                                        </rdf:rest>
+                                                    </rdf:Description>
+                                                </swrl:arguments>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Trail"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#x"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment>Se le sospensioni hanno escursione compresa tra 140 e 160mm, allora si tratta di una bicicletta da Enduro</rdfs:comment>
+        <rdfs:label>Enduro SAG</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta_da_Mountainbike"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#x"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#escursione"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#x"/>
+                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#e"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                        <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#greaterThanOrEqual"/>
+                                        <swrl:arguments>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                <rdf:first rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#e"/>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">140</rdf:first>
+                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </swrl:arguments>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                                <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#lessThanOrEqual"/>
+                                                <swrl:arguments>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                        <rdf:first rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#e"/>
+                                                        <rdf:rest>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">160</rdf:first>
+                                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                            </rdf:Description>
+                                                        </rdf:rest>
+                                                    </rdf:Description>
+                                                </swrl:arguments>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Enduro"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#x"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment>Se le sospensioni hanno escursione compresa tra 160 e 200mm, allora si tratta di una bicicletta da DownHill</rdfs:comment>
+        <rdfs:label>DH SAG</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#Bicicletta_da_Mountainbike"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#x"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#escursione"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#x"/>
+                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#e"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                        <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#greaterThanOrEqual"/>
+                                        <swrl:arguments>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                <rdf:first rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#e"/>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">160</rdf:first>
+                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </swrl:arguments>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                                <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#lessThanOrEqual"/>
+                                                <swrl:arguments>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                        <rdf:first rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#e"/>
+                                                        <rdf:rest>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">200</rdf:first>
+                                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                            </rdf:Description>
+                                                        </rdf:rest>
+                                                    </rdf:Description>
+                                                </swrl:arguments>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#DownHill"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/ettorecalvi/ontologies/2024/0/bicycle#x"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi -->
+
